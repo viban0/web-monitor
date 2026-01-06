@@ -1,4 +1,4 @@
-name: 30분 모니터링
+name: 15분 모니터링
 
 on:
   schedule:
