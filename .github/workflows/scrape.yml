@@ -21,8 +21,7 @@ jobs:
 
       - name: 라이브러리 설치
         run: |
-          pip install requests playwright
-          playwright install chromium
+          pip install requests beautifulsoup4
 
       - name: 모니터링 실행
         env:
