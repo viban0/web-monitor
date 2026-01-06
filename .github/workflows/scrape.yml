@@ -2,7 +2,8 @@ name: 30분 모니터링
 
 on:
   schedule:
-    - cron: '0,30 * * * *' # 매 30분마다 실행
+    
+    - cron: '13,43 * * * *' # 13분, 43분 (쾌적함)
   workflow_dispatch:       # 버튼 눌러서 수동 실행 가능
 
 jobs:
