@@ -33,7 +33,7 @@ def get_emoji(title):
         return "📢" 
 
 # ------------------------------------------------------
-# 2. 텔레그램 전송 함수 (구분선 포함 버전)
+# 2. 텔레그램 전송 함수 (구분선 포함)
 # ------------------------------------------------------
 def send_telegram(title, link, info):
     if TOKEN and CHAT_ID:
@@ -41,14 +41,14 @@ def send_telegram(title, link, info):
             icon = get_emoji(title)
             safe_title = title.replace("[", "(").replace("]", ")")
             
-            # ▼ 변경된 메시지 포맷 (구분선 복구!) ▼
+            # ▼ 메시지 포맷 ▼
             # 💰 제목
             # ────────────────
-            # 2026-01-07 | 학생복지팀
-            # [공지 바로가기]
+            # | 작성일 2026-01-07 | 학생복지팀
+            # [👉 공지 바로가기]
             
             msg = f"{icon} *{safe_title}*\n" \
-                  f"────────────────\n" \
+                  f"\n" \
                   f"{info}\n" \
                   f"[👉 공지 바로가기]({link})"
             
@@ -72,7 +72,6 @@ def run():
         response = requests.get(TARGET_URL, headers=headers, verify=False, timeout=30)
         soup = BeautifulSoup(response.text, 'html.parser')
         
-        # 게시글 목록 가져오기 (상단 50개)
         items = soup.select(".board-list-box ul li")[:50]
         
         current_new_posts = []
@@ -84,7 +83,6 @@ def run():
             if "신규게시글" not in item.get_text():
                 continue
 
-            # 2. 정보 추출
             a_tag = item.select_one("div.board-text > a")
             info_tag = item.select_one("p.info") 
 
@@ -97,16 +95,53 @@ def run():
                 link = a_tag.get('href')
                 full_link = f"https://www.kw.ac.kr{link}" if link else TARGET_URL
                 
-                # 부가 정보 정리 (조회수 제거)
+                # ▼ 정보 정리 (수정일 제거 및 포맷팅 로직) ▼
                 meta_info = ""
                 if info_tag:
-                    parts = info_tag.get_text(" ", strip=True).split()
-                    filtered_parts = []
+                    # 1. 텍스트를 파이프(|) 기준으로 쪼갭니다.
+                    raw_text = info_tag.get_text("|", strip=True)
+                    parts = raw_text.split("|")
+                    
+                    clean_parts = []
+                    skip_next = False
+                    
                     for part in parts:
-                        if "조회" in part: continue
-                        if part.isdigit() and len(part) < 6: continue
-                        filtered_parts.append(part)
-                    meta_info = " | ".join(filtered_parts)
+                        p = part.strip()
+                        if not p: continue # 빈칸 제거
+                        
+                        if "수정일" in p:
+                            skip_next = True # 수정일 나오면 다음(날짜)도 스킵 준비
+                            continue
+                        
+                        if skip_next:
+                            # 수정일 뒤에 오는 날짜(숫자 포함된 문자열)를 스킵
+                            if any(char.isdigit() for char in p):
+                                skip_next = False
+                                continue
+                            else:
+                                skip_next = False
+                        
+                        if "조회" in p: continue
+                        
+                        clean_parts.append(p)
+                    
+                    # clean_parts -> ['작성일', '2026-01-07', '학생복지팀'] 상태
+                    
+                    # 2. '작성일'과 날짜를 한 덩어리로 합치기
+                    final_parts = []
+                    idx = 0
+                    while idx < len(clean_parts):
+                        current = clean_parts[idx]
+                        if "작성일" in current and idx + 1 < len(clean_parts):
+                            final_parts.append(f"{current} {clean_parts[idx+1]}") # "작성일 2026-01-07"
+                            idx += 2
+                        else:
+                            final_parts.append(current)
+                            idx += 1
+                    
+                    # 3. 최종 조립: "| 작성일 2026-01-07 | 학생복지팀"
+                    if final_parts:
+                        meta_info = "| " + " | ".join(final_parts)
 
                 # 식별자 생성
                 fingerprint = f"{clean_title}|{full_link}"
@@ -118,11 +153,10 @@ def run():
                     "info": meta_info
                 })
 
-        # 3. 데이터 비교 및 알림 전송
+        # 3. 데이터 비교 및 전송
         old_posts = []
         if os.path.exists("data.txt"):
             with open("data.txt", "r", encoding="utf-8") as f:
-                # 빈 줄 무시하고 읽기
                 old_posts = [line.strip() for line in f.readlines() if line.strip()]
 
         save_data = []
