@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>광운대 알리미 - KW Notification</title>
+    <style>
+        /* 기본 스타일 설정 */
+        :root {
+            --kw-red: #8a0025; /* 광운대 상징색 유사 컬러 */
+            --bg-light: #f8f9fa;
+            --text-dark: #333;
+        }
+        body { margin: 0; font-family: 'Pretendard', sans-serif; line-height: 1.6; color: var(--text-dark); }
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        
+        /* 1. 메인 섹션 */
+        header { background-color: var(--kw-red); color: white; padding: 60px 20px; text-align: center; }
+        header h1 { margin: 0; font-size: 2.5rem; }
+        header p { font-size: 1.2rem; opacity: 0.9; }
+        .btn { display: inline-block; background: white; color: var(--kw-red); padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; margin-top: 20px; }
+        .btn:hover { background: #eee; }
+
+        /* 2. 작동 로직 섹션 (다이어그램 스타일) */
+        .logic-section { padding: 50px 0; background: white; text-align: center; }
+        .flow-container { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 20px; margin-top: 30px; }
+        .flow-box { border: 2px solid #ddd; padding: 20px; border-radius: 10px; width: 180px; background: white; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .flow-arrow { font-size: 2rem; color: var(--kw-red); }
+        .flow-box h3 { margin: 0 0 10px 0; font-size: 1.1rem; color: var(--kw-red); }
+        .flow-box p { margin: 0; font-size: 0.9rem; color: #666; }
+
+        /* 3. 기능 소개 섹션 */
+        .features { background-color: var(--bg-light); padding: 50px 0; }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .feature-item { background: white; padding: 20px; border-radius: 8px; text-align: center; }
+
+        /* 푸터 */
+        footer { text-align: center; padding: 20px; background: #333; color: white; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>📢 광운대 알리미</h1>
+            <p>학교 공지사항, 매일 확인하지 말고 알림으로 받으세요.</p>
+            <a href="#" class="btn">텔레그램 봇 추가하기 (링크 예정)</a>
+        </div>
+    </header>
+
+    <section class="logic-section">
+        <div class="container">
+            <h2>⚙️ 어떻게 작동하나요?</h2>
+            <p>24시간 멈추지 않는 자동화 시스템을 통해 공지사항을 전달합니다.</p>
+            
+            <div class="flow-container">
+                <div class="flow-box">
+                    <h3>KW Website</h3>
+                    <p>광운대 홈페이지<br>공지사항 게시판</p>
+                </div>
+                <div class="flow-arrow">➜</div>
+                
+                <div class="flow-box">
+                    <h3>Python Crawler</h3>
+                    <p>최신 게시글 감지<br>(GitHub Actions 실행)</p>
+                </div>
+                <div class="flow-arrow">➜</div>
+
+                <div class="flow-box">
+                    <h3>Telegram Bot</h3>
+                    <p>사용자에게<br>메시지 전송</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2 style="text-align: center;">✨ 주요 기능</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>⚡ 실시간 알림</h3>
+                    <p>새로운 공지가 올라오면<br>지체 없이 바로 알려드립니다.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🔍 키워드 필터링</h3>
+                    <p>관심 있는 장학금, 행사 등<br>원하는 키워드만 받아보세요.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>☁️ 서버리스 운영</h3>
+                    <p>GitHub Actions를 활용해<br>안정적으로 24시간 운영됩니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Kwangwoon Alarm Project. Created by Student Developer.</p>
+    </footer>
+
+</body>
+</html>
