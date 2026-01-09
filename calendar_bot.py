@@ -15,10 +15,8 @@ TOKEN = os.environ.get('TELEGRAM_TOKEN')
 CHAT_ID = os.environ.get('TELEGRAM_CHAT_ID')
 
 def parse_date(date_str, current_year):
-    """
-    날짜 문자열 파싱 (예: 02.02(월) ~ 02.27(금))
-    """
-    clean_str = re.sub(r'\([가-힣]\)', '', date_str) # 요일 제거
+    # 괄호와 요일 제거
+    clean_str = re.sub(r'\([가-힣]\)', '', date_str)
     
     if "~" in clean_str:
         start_str, end_str = clean_str.split("~")
@@ -50,50 +48,54 @@ def get_calendar_events():
 
         print(f"📡 페이지 접속 상태: {response.status_code}")
         
-        # ▼ [수정] 사용자님이 지정한 정확한 클래스 이름으로 타겟팅
-        # class="schedule-list-box schedule-this-yearlist"
-        target_box = soup.select_one("div.schedule-list-box.schedule-this-yearlist")
+        # ▼ [핵심 수정] 구체적인 이름 대신, 공통된 이름 'schedule-list-box'를 가진 모든 박스를 찾습니다.
+        # (월별 보기 박스, 연간 보기 박스 등이 다 잡힙니다)
+        all_boxes = soup.select("div.schedule-list-box")
         
-        if not target_box:
-            print("⚠️ 'schedule-this-yearlist' 박스를 찾지 못했습니다. (클래스명 변경 가능성)")
-            # 혹시 몰라 비상용으로 조금 더 넓은 범위인 schedule-list-box 시도
-            target_box = soup.select_one("div.schedule-list-box")
-
-        if not target_box:
-            print("❌ 학사일정 박스 자체를 찾을 수 없습니다.")
-            return []
-
-        # 타겟 박스 안의 모든 li 태그만 가져오기 (메뉴바 제외됨)
-        list_items = target_box.select("li")
-        print(f"🔍 학사일정 박스 안의 항목 수: {len(list_items)}개")
+        print(f"🔍 발견된 스케줄 박스 개수: {len(all_boxes)}개")
         
-        count = 0
-        for item in list_items:
-            # 박스 안의 텍스트를 가져옴
-            full_text = item.get_text(" ", strip=True)
+        found_count = 0
+        
+        # 발견된 모든 박스를 하나씩 뜯어봅니다.
+        for i, box in enumerate(all_boxes):
+            list_items = box.select("li")
+            print(f"  ▶ [Box {i+1}] 내부 리스트 아이템 수: {len(list_items)}개")
             
-            # strong 태그(보통 날짜)가 있는지 확인하거나, 정규식으로 날짜 패턴 검색
-            # 패턴: 숫자.숫자(요일)
-            match = re.search(r'(\d{2}\.\d{2}\([가-힣]\)(?:\s*~\s*\d{2}\.\d{2}\([가-힣]\))?)', full_text)
-            
-            if match:
-                date_part = match.group(1)
-                title_part = full_text.replace(date_part, "").strip()
+            for item in list_items:
+                # 텍스트 전체 가져오기
+                full_text = item.get_text(" ", strip=True)
                 
-                if len(title_part) < 2: continue
+                # 디버깅용: 텍스트가 어떻게 생겼는지 확인
+                # print(f"    - 읽은 텍스트: {full_text}")
+                
+                # 날짜 패턴 찾기 (숫자.숫자 형태)
+                # 정규식을 좀 더 유연하게 (괄호나 띄어쓰기 변수 고려)
+                match = re.search(r'(\d{2}\.\d{2})', full_text)
+                
+                if match:
+                    # 정확한 날짜 구간 추출을 위해 다시 정규식 적용
+                    # 예: 02.02(월) ~ 02.27(금)
+                    full_date_match = re.search(r'(\d{2}\.\d{2}\([가-힣]\)(?:\s*~\s*\d{2}\.\d{2}\([가-힣]\))?)', full_text)
+                    
+                    if full_date_match:
+                        date_part = full_date_match.group(1)
+                        title_part = full_text.replace(date_part, "").strip()
+                        
+                        # 제목이 너무 짧으면 패스
+                        if len(title_part) < 2: continue
 
-                try:
-                    s_date, e_date = parse_date(date_part, current_year)
-                    events.append({
-                        "title": title_part,
-                        "start": s_date,
-                        "end": e_date
-                    })
-                    count += 1
-                except Exception:
-                    continue
-        
-        print(f"✅ 추출된 학사일정: {count}개")
+                        try:
+                            s_date, e_date = parse_date(date_part, current_year)
+                            events.append({
+                                "title": title_part,
+                                "start": s_date,
+                                "end": e_date
+                            })
+                            found_count += 1
+                        except Exception:
+                            continue
+
+        print(f"✅ 최종 추출된 학사일정: {found_count}개")
         events.sort(key=lambda x: x['start'])
         return events
 
