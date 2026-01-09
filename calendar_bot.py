@@ -18,8 +18,7 @@ def parse_date(date_str, current_year):
     """
     날짜 문자열 파싱 (예: 02.02(월) ~ 02.27(금))
     """
-    # 괄호와 요일 제거
-    clean_str = re.sub(r'\([가-힣]\)', '', date_str)
+    clean_str = re.sub(r'\([가-힣]\)', '', date_str) # 요일 제거
     
     if "~" in clean_str:
         start_str, end_str = clean_str.split("~")
@@ -30,7 +29,6 @@ def parse_date(date_str, current_year):
     start_str = start_str.strip()
     end_str = end_str.strip()
     
-    # 연도 붙여서 날짜 객체로 변환
     start_date = datetime.strptime(f"{current_year}.{start_str}", "%Y.%m.%d").date()
     end_date = datetime.strptime(f"{current_year}.{end_str}", "%Y.%m.%d").date()
     
@@ -52,36 +50,37 @@ def get_calendar_events():
 
         print(f"📡 페이지 접속 상태: {response.status_code}")
         
-        # 1. 페이지 내의 모든 'li' 태그를 가져옵니다.
-        all_list_items = soup.find_all("li")
-        print(f"🔍 페이지 내 전체 목록(li) 개수: {len(all_list_items)}개")
+        # ▼ [수정] 사용자님이 지정한 정확한 클래스 이름으로 타겟팅
+        # class="schedule-list-box schedule-this-yearlist"
+        target_box = soup.select_one("div.schedule-list-box.schedule-this-yearlist")
         
-        # 디버깅용: 봇이 보고 있는 텍스트가 뭔지 확인 (앞부분 5개만 출력)
-        print("--- [디버깅] 봇이 읽은 목록 내용 예시 (상위 5개) ---")
-        for i, item in enumerate(all_list_items[:5]):
-            print(f"{i+1}. {item.get_text(strip=True)[:30]}...") 
-        print("--------------------------------------------------")
+        if not target_box:
+            print("⚠️ 'schedule-this-yearlist' 박스를 찾지 못했습니다. (클래스명 변경 가능성)")
+            # 혹시 몰라 비상용으로 조금 더 넓은 범위인 schedule-list-box 시도
+            target_box = soup.select_one("div.schedule-list-box")
 
+        if not target_box:
+            print("❌ 학사일정 박스 자체를 찾을 수 없습니다.")
+            return []
+
+        # 타겟 박스 안의 모든 li 태그만 가져오기 (메뉴바 제외됨)
+        list_items = target_box.select("li")
+        print(f"🔍 학사일정 박스 안의 항목 수: {len(list_items)}개")
+        
         count = 0
-        for item in all_list_items:
-            # 2. 태그 상관없이 '텍스트'만 싹 긁어옵니다.
-            full_text = item.get_text(" ", strip=True) # 공백을 띄어쓰기로 변환
+        for item in list_items:
+            # 박스 안의 텍스트를 가져옴
+            full_text = item.get_text(" ", strip=True)
             
-            # 3. 정규식(Regex)으로 날짜 패턴을 찾습니다.
-            # 패턴: 숫자2개.숫자2개(한글요일) ~ 숫자2개.숫자2개(한글요일)
-            # 예: 02.02(월) ~ 02.27(금) 또는 02.20(금)
+            # strong 태그(보통 날짜)가 있는지 확인하거나, 정규식으로 날짜 패턴 검색
+            # 패턴: 숫자.숫자(요일)
             match = re.search(r'(\d{2}\.\d{2}\([가-힣]\)(?:\s*~\s*\d{2}\.\d{2}\([가-힣]\))?)', full_text)
             
             if match:
-                date_part = match.group(1) # 찾은 날짜 부분
-                
-                # 전체 텍스트에서 날짜 부분을 뺀 나머지를 '제목'으로 간주
-                # 예: "02.20(금) 입학식" -> "입학식"
+                date_part = match.group(1)
                 title_part = full_text.replace(date_part, "").strip()
                 
-                # 제목이 너무 짧으면(1글자 이하) 스킵 (쓰레기 데이터 방지)
-                if len(title_part) < 2:
-                    continue
+                if len(title_part) < 2: continue
 
                 try:
                     s_date, e_date = parse_date(date_part, current_year)
@@ -93,9 +92,8 @@ def get_calendar_events():
                     count += 1
                 except Exception:
                     continue
-
-        print(f"✅ 학사일정 패턴 일치 항목: {count}개 찾음")
         
+        print(f"✅ 추출된 학사일정: {count}개")
         events.sort(key=lambda x: x['start'])
         return events
 
@@ -122,7 +120,7 @@ def run():
     events = get_calendar_events()
     
     if not events:
-        print("❌ 일정을 하나도 찾지 못했습니다.")
+        print("❌ 일정을 가져오지 못했습니다.")
         return
 
     today_events = []
