@@ -1,13 +1,17 @@
 import os
-import requests
-from bs4 import BeautifulSoup
-from datetime import datetime
+import time
+from datetime import datetime, timedelta
 import re
 import pytz
-import urllib3
+from bs4 import BeautifulSoup
+import requests
 
-# SSL 인증서 경고 무시
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+# ▼ 셀레니움 관련 기능 불러오기 ▼
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.by import By
 
 # ▼ 설정 ▼
 TARGET_URL = "https://www.kw.ac.kr/ko/life/bachelor_calendar.jsp"
@@ -15,7 +19,7 @@ TOKEN = os.environ.get('TELEGRAM_TOKEN')
 CHAT_ID = os.environ.get('TELEGRAM_CHAT_ID')
 
 def parse_date(date_str, current_year):
-    # 괄호와 요일 제거 및 공백 정리
+    # 괄호/요일 제거 및 공백 정리
     clean_str = re.sub(r'\([가-힣]\)', '', date_str).strip()
     
     if "~" in clean_str:
@@ -27,63 +31,68 @@ def parse_date(date_str, current_year):
     start_str = start_str.strip()
     end_str = end_str.strip()
     
-    # 날짜 변환
     start_date = datetime.strptime(f"{current_year}.{start_str}", "%Y.%m.%d").date()
     end_date = datetime.strptime(f"{current_year}.{end_str}", "%Y.%m.%d").date()
     
     return start_date, end_date
 
-def get_calendar_events():
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/91.0.4472.124 Safari/537.36"
-    }
+def get_calendar_with_selenium():
+    # 1. 가짜 브라우저(Headless Chrome) 설정
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")  # 화면 없이 실행 (서버용)
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    
+    # 2. 브라우저 실행
+    print("🚀 크롬 브라우저를 실행합니다...")
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
     
     try:
-        response = requests.get(TARGET_URL, headers=headers, verify=False, timeout=30)
-        response.encoding = 'utf-8' 
+        # 3. 페이지 접속
+        print(f"📡 접속 중: {TARGET_URL}")
+        driver.get(TARGET_URL)
         
-        soup = BeautifulSoup(response.text, 'html.parser')
+        # 4. 자바스크립트 로딩 대기 (3초)
+        # 사이트가 느리면 숫자를 늘려야 함 (최대 10초 추천)
+        time.sleep(3)
         
-        # 스크립트와 스타일 태그 제거 (순수 텍스트만 남기기 위해)
+        # 5. 로딩된 페이지의 '소스 코드'를 가져옴 (이제 내용은 채워져 있음!)
+        html_source = driver.page_source
+        soup = BeautifulSoup(html_source, 'html.parser')
+        
+        # --- 여기서부터는 아까 했던 '무조건 탐색' 로직과 동일 ---
+        
+        # 스크립트 제거
         for script in soup(["script", "style"]):
             script.decompose()
 
-        # 웹페이지의 모든 텍스트를 줄 단위로 리스트화
         all_lines = soup.get_text(separator="\n", strip=True).splitlines()
-        
-        print(f"📡 페이지 접속 상태: {response.status_code}")
-        print(f"🔍 전체 텍스트 라인 수: {len(all_lines)}줄")
+        print(f"🔍 읽어온 텍스트 라인 수: {len(all_lines)}줄")
         
         events = []
         now = datetime.now()
         current_year = now.year 
-
         found_count = 0
         
         for line in all_lines:
             line = line.strip()
             if not line: continue
             
-            # 정규식: "숫자.숫자" 패턴이 포함된 줄을 찾음
-            # 예: "02.02(월) ~ 02.27(금) 2026학년도 1학기 복학신청"
+            # 날짜 패턴 찾기 (숫자.숫자)
             match = re.search(r'(\d{2}\.\d{2})', line)
-            
             if match:
-                # 정확한 날짜 포맷이 있는지 2차 검증 (요일 포함)
+                # 정밀 패턴 확인 (요일 포함)
                 date_match = re.search(r'(\d{2}\.\d{2}\([가-힣]\)(?:\s*~\s*\d{2}\.\d{2}\([가-힣]\))?)', line)
-                
                 if date_match:
                     date_part = date_match.group(1)
-                    # 날짜를 뺀 나머지를 제목으로
                     title_part = line.replace(date_part, "").strip()
                     
-                    # 제목이 너무 짧으면 패스
                     if len(title_part) < 2: continue
 
                     try:
                         s_date, e_date = parse_date(date_part, current_year)
                         
-                        # 중복 방지 (같은 내용이 여러 줄에 걸쳐 나올 수 있음)
+                        # 중복 제거
                         is_duplicate = False
                         for e in events:
                             if e['title'] == title_part and e['start'] == s_date:
@@ -99,22 +108,18 @@ def get_calendar_events():
                             found_count += 1
                     except Exception:
                         continue
-
-        print(f"✅ 최종 추출된 학사일정: {found_count}개")
-        
-        # 디버깅: 만약 0개라면 봇이 본 텍스트 일부 출력
-        if found_count == 0:
-            print("--- [디버깅] 봇이 본 텍스트 상위 20줄 ---")
-            for l in all_lines[:20]:
-                print(l)
-            print("------------------------------------------")
-
+                        
+        print(f"✅ 셀레니움으로 찾은 일정: {found_count}개")
         events.sort(key=lambda x: x['start'])
         return events
 
     except Exception as e:
-        print(f"❌ 오류 발생: {e}")
+        print(f"❌ 브라우저 에러: {e}")
         return []
+    finally:
+        # 6. 브라우저 종료 (중요)
+        driver.quit()
+        print("👋 브라우저 종료")
 
 def send_telegram(msg):
     if TOKEN and CHAT_ID:
@@ -132,10 +137,11 @@ def run():
     
     print(f"📅 기준 날짜: {today}")
     
-    events = get_calendar_events()
+    # 함수 이름 변경됨: get_calendar_events -> get_calendar_with_selenium
+    events = get_calendar_with_selenium()
     
     if not events:
-        print("❌ 일정을 가져오지 못했습니다. (텍스트 스캔 실패)")
+        print("❌ 일정을 가져오지 못했습니다.")
         return
 
     today_events = []
