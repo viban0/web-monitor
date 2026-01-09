@@ -21,26 +21,19 @@ TOKEN = os.environ.get('TELEGRAM_TOKEN')
 CHAT_ID = os.environ.get('TELEGRAM_CHAT_ID')
 
 def parse_date_str(date_text, current_year):
-    """
-    태그에서 가져온 날짜 텍스트(예: "02.02(월) ~ 02.27(금)")를 분석합니다.
-    구분자(~, -)가 무엇이든 상관없이 숫자 패턴만 추출합니다.
-    """
-    # 1. 숫자.숫자 패턴을 모두 찾습니다.
+    """ 날짜 문자열(02.02 ~ 02.04)을 파싱하여 시작일, 종료일 반환 """
+    # 정규식으로 숫자.숫자 패턴만 모두 추출
     dates = re.findall(r'(\d{2}\.\d{2})', date_text)
     
     if not dates:
         return None, None
         
     try:
-        # 첫 번째 날짜 (시작일)
         start_dt = datetime.strptime(f"{current_year}.{dates[0]}", "%Y.%m.%d").date()
-        
-        # 날짜가 2개 이상이면 두 번째가 종료일, 1개면 시작일=종료일
         if len(dates) >= 2:
             end_dt = datetime.strptime(f"{current_year}.{dates[1]}", "%Y.%m.%d").date()
         else:
             end_dt = start_dt
-            
         return start_dt, end_dt
     except ValueError:
         return None, None
@@ -60,7 +53,7 @@ def get_calendar_with_selenium():
         print(f"📡 접속 중: {TARGET_URL}")
         driver.get(TARGET_URL)
         
-        # 1. [중요] 연간 리스트(li)가 로딩될 때까지 대기
+        # 1. 로딩 대기
         try:
             WebDriverWait(driver, 20).until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, ".schedule-this-yearlist li"))
@@ -69,7 +62,6 @@ def get_calendar_with_selenium():
         except:
             print("⚠️ 로딩 시간 초과! (스크롤 후 계속 시도)")
 
-        # 2. 안전하게 데이터 확보를 위한 스크롤
         time.sleep(3)
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         time.sleep(1)
@@ -77,52 +69,61 @@ def get_calendar_with_selenium():
         html_source = driver.page_source
         soup = BeautifulSoup(html_source, 'html.parser')
         
+        # 2. 텍스트 라인 추출 (빈 줄 제거)
+        # separator="\n"을 주어 태그가 달라도 줄바꿈이 되도록 함
+        all_lines = [line.strip() for line in soup.get_text(separator="\n", strip=True).splitlines() if line.strip()]
+        
+        print(f"🔍 읽어온 텍스트 라인 수: {len(all_lines)}줄")
+        
         events = []
         now = datetime.now()
         current_year = now.year 
 
-        # 3. [핵심] 텍스트가 아닌 'HTML 태그 구조'로 찾기
-        # 스크린샷에 나온 구조: li -> strong(날짜), p(제목)
+        # ▼▼▼ [핵심 로직] 순차적 스캔 (State Machine) ▼▼▼
+        pending_date_range = None # 날짜를 기억할 변수
         
-        # 타겟 박스 찾기
-        target_box = soup.select_one(".schedule-this-yearlist")
-        if not target_box:
-            print("❌ schedule-this-yearlist 박스를 찾지 못했습니다.")
-            # 비상용: 이름 상관없이 li 안에 strong, p가 있는 구조 찾기
-            list_items = soup.select("li")
-        else:
-            list_items = target_box.select("li")
+        count = 0
+        for line in all_lines:
+            # 1. 이 줄이 '날짜'인지 확인 (예: 02.02(월) ...)
+            # 정규식: 시작(^)이 숫자.숫자 인 경우
+            is_date_line = re.match(r'^\d{2}\.\d{2}', line)
             
-        print(f"🔍 발견된 항목(li) 개수: {len(list_items)}개")
-
-        found_count = 0
-        for item in list_items:
-            try:
-                # 태그 직접 찾기
-                date_tag = item.select_one("strong")
-                title_tag = item.select_one("p")
-                
-                # 둘 중 하나라도 없으면 우리가 찾는 일정이 아님
-                if not date_tag or not title_tag:
-                    continue
-                    
-                date_text = date_tag.get_text(strip=True)
-                title_text = title_tag.get_text(strip=True)
-                
-                # 날짜 파싱
-                s_date, e_date = parse_date_str(date_text, current_year)
-                
+            if is_date_line:
+                # 날짜 줄을 발견하면 파싱해서 '기억'해둡니다.
+                s_date, e_date = parse_date_str(line, current_year)
                 if s_date and e_date:
+                    pending_date_range = (s_date, e_date)
+                    # (아직 제목을 못 찾았으니 저장하지 않고 넘어감)
+            
+            elif pending_date_range:
+                # 2. 날짜가 아닌데, '기억된 날짜'가 있다? -> 이게 바로 '제목'이다!
+                title = line
+                s_date, e_date = pending_date_range
+                
+                # 제목이 너무 짧거나(단순 기호), 또 다른 날짜 패턴이면 무시
+                if len(title) < 2 or re.match(r'^\d{2}\.\d{2}', title):
+                    continue
+
+                # 저장
+                # 중복 방지
+                is_duplicate = False
+                for e in events:
+                    if e['title'] == title and e['start'] == s_date:
+                        is_duplicate = True
+                        break
+                
+                if not is_duplicate:
                     events.append({
-                        "title": title_text,
+                        "title": title,
                         "start": s_date,
                         "end": e_date
                     })
-                    found_count += 1
-            except Exception:
-                continue
-                        
-        print(f"✅ 최종 추출된 일정: {found_count}개")
+                    count += 1
+                
+                # 사용했으니 기억 초기화 (다음 날짜를 기다림)
+                pending_date_range = None
+        
+        print(f"✅ 최종 추출된 일정: {count}개")
         events.sort(key=lambda x: x['start'])
         return events
 
