@@ -16,10 +16,9 @@ CHAT_ID = os.environ.get('TELEGRAM_CHAT_ID')
 
 def parse_date(date_str, current_year):
     """
-    날짜 문자열을 파싱해서 시작일과 종료일을 반환합니다.
-    예: '02.02(월) ~ 02.27(금)' 또는 '02.20(금)'
+    '02.20(금)' 또는 '02.02(월) ~ 02.27(금)' 형태를 파싱
     """
-    # 괄호와 요일 제거
+    # 괄호와 요일 제거 -> '02.20' 또는 '02.02 ~ 02.27'
     clean_str = re.sub(r'\([가-힣]\)', '', date_str)
     
     if "~" in clean_str:
@@ -31,6 +30,7 @@ def parse_date(date_str, current_year):
     start_str = start_str.strip()
     end_str = end_str.strip()
     
+    # 연도 붙여서 날짜 객체로 변환
     start_date = datetime.strptime(f"{current_year}.{start_str}", "%Y.%m.%d").date()
     end_date = datetime.strptime(f"{current_year}.{end_str}", "%Y.%m.%d").date()
     
@@ -49,37 +49,42 @@ def get_calendar_events():
         now = datetime.now()
         current_year = now.year 
 
-        # 광운대 학사일정 구조 파싱 (연도별 텍스트 박스 형태)
-        content_div = soup.select_one("div.bachelor_sch")
-        if not content_div:
-            return []
-
-        # 전체 텍스트에서 한 줄씩 읽으며 날짜 패턴 찾기
-        text_lines = content_div.get_text("\n").split("\n")
+        # ▼ 수정된 부분: 스크린샷의 HTML 구조 반영 (div.schedule-list-box > ul > li)
+        # 개발자 도구 사진에 나온 class="schedule-list-box" 안의 ul li를 찾습니다.
+        list_items = soup.select("div.schedule-list-box ul li")
         
-        for line in text_lines:
-            line = line.strip()
-            if not line: continue
-            
-            # 정규식으로 '00.00(요일)' 패턴 찾기
-            match = re.search(r'(\d{2}\.\d{2}\([가-힣]\)(?:\s*~\s*\d{2}\.\d{2}\([가-힣]\))?)', line)
-            
-            if match:
-                date_part = match.group(1)
-                title_part = line.replace(date_part, "").strip()
-                
-                if len(title_part) < 2: continue # 내용이 없으면 패스
-                    
-                try:
-                    s_date, e_date = parse_date(date_part, current_year)
-                    events.append({
-                        "title": title_part,
-                        "start": s_date,
-                        "end": e_date
-                    })
-                except:
-                    continue
+        if not list_items:
+            # 혹시 div.list가 중간에 껴있을 경우 대비 (스크린샷 구조: div.list > ul > li)
+            list_items = soup.select("div.list ul li")
 
+        for item in list_items:
+            # strong 태그: 날짜 (예: 02.20(금))
+            date_tag = item.select_one("strong")
+            # p 태그: 행사명 (예: 신입생 수강신청)
+            title_tag = item.select_one("p")
+            
+            if not date_tag or not title_tag:
+                continue
+                
+            date_text = date_tag.get_text(strip=True)
+            title_text = title_tag.get_text(strip=True)
+            
+            # 내용이 없으면 패스
+            if not date_text or not title_text:
+                continue
+
+            try:
+                s_date, e_date = parse_date(date_text, current_year)
+                events.append({
+                    "title": title_text,
+                    "start": s_date,
+                    "end": e_date
+                })
+            except Exception as e:
+                # 날짜 형식이 특이한 경우(예: '미정') 건너뜀
+                continue
+
+        # 날짜순 정렬
         events.sort(key=lambda x: x['start'])
         return events
 
@@ -113,14 +118,14 @@ def run():
     upcoming_events = []
     
     for event in events:
-        # 오늘 일정
+        # 1. 오늘 일정 (시작일 <= 오늘 <= 종료일)
         if event['start'] <= today <= event['end']:
             today_events.append(event['title'])
         
-        # 다가오는 일정 (오늘 이후 시작하는 것만)
+        # 2. 다가오는 일정 (오늘 < 시작일)
         if event['start'] > today:
             d_day = (event['start'] - today).days
-            # 60일 이내 일정만
+            # 60일 이내 일정만 표시
             if d_day <= 60:
                 upcoming_events.append({
                     "title": event['title'],
@@ -128,21 +133,23 @@ def run():
                     "date": event['start'].strftime("%m/%d")
                 })
 
+    # 보낼 내용이 아예 없으면 조용히 종료
     if not today_events and not upcoming_events:
+        print("전송할 알림이 없습니다.")
         return
 
     msg_lines = []
     
-    # 1. 헤더 (구분선 X)
+    # 헤더
     msg_lines.append(f"📆 *광운대 학사일정* ({today.strftime('%m/%d')})")
     
-    # 2. 오늘 일정
+    # 오늘 일정 출력
     if today_events:
         msg_lines.append("\n🔔 *오늘의 일정*")
         for title in today_events:
             msg_lines.append(f"• {title}")
     
-    # 3. 다가오는 일정 (최대 2개만)
+    # 다가오는 일정 출력 (최대 2개)
     if upcoming_events:
         msg_lines.append("\n⏳ *다가오는 일정*")
         for item in upcoming_events[:2]: 
