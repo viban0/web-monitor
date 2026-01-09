@@ -21,7 +21,7 @@ TOKEN = os.environ.get('TELEGRAM_TOKEN')
 CHAT_ID = os.environ.get('TELEGRAM_CHAT_ID')
 
 def parse_date(date_str, current_year):
-    # 괄호 제거
+    # 괄호 및 불필요한 공백 제거
     clean_str = re.sub(r'\([가-힣]\)', '', date_str).strip()
     
     if "~" in clean_str:
@@ -33,10 +33,12 @@ def parse_date(date_str, current_year):
     start_str = start_str.strip()
     end_str = end_str.strip()
     
-    start_date = datetime.strptime(f"{current_year}.{start_str}", "%Y.%m.%d").date()
-    end_date = datetime.strptime(f"{current_year}.{end_str}", "%Y.%m.%d").date()
-    
-    return start_date, end_date
+    try:
+        start_date = datetime.strptime(f"{current_year}.{start_str}", "%Y.%m.%d").date()
+        end_date = datetime.strptime(f"{current_year}.{end_str}", "%Y.%m.%d").date()
+        return start_date, end_date
+    except ValueError:
+        return None, None
 
 def get_calendar_with_selenium():
     chrome_options = Options()
@@ -53,85 +55,84 @@ def get_calendar_with_selenium():
         print(f"📡 접속 중: {TARGET_URL}")
         driver.get(TARGET_URL)
         
-        # 로딩 대기
+        # 1. '연간 리스트(li)'가 로딩될 때까지 대기
         try:
+            print("⏳ 데이터 로딩 대기 중...")
             WebDriverWait(driver, 20).until(
-                EC.presence_of_element_located((By.CLASS_NAME, "schedule-this-yearlist"))
+                # schedule-this-yearlist 안의 li 태그가 생길 때까지 기다림
+                EC.presence_of_element_located((By.CSS_SELECTOR, ".schedule-this-yearlist li"))
             )
+            print("✨ 데이터 로딩 완료!")
         except:
-            pass
+            print("⚠️ 대기 시간 초과! (스크롤 후 계속 진행)")
 
-        time.sleep(3)
+        # 2. 확실한 로딩을 위해 스크롤 및 대기
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        time.sleep(1)
+        time.sleep(3)
 
+        # 3. HTML 파싱 시작
         html_source = driver.page_source
         soup = BeautifulSoup(html_source, 'html.parser')
-        
-        for script in soup(["script", "style"]):
-            script.decompose()
-
-        # 텍스트 라인 추출
-        all_lines = soup.get_text(separator="\n", strip=True).splitlines()
-        print(f"🔍 읽어온 텍스트 라인 수: {len(all_lines)}줄")
         
         events = []
         now = datetime.now()
         current_year = now.year 
-        found_count = 0
         
-        # ▼▼▼ [수정 핵심] 줄바꿈 데이터 처리 로직 ▼▼▼
-        i = 0
-        while i < len(all_lines):
-            line = all_lines[i].strip()
+        # ▼▼▼ [핵심 변경] 텍스트가 아닌 '구조(li)'를 찾습니다 ▼▼▼
+        # 우리가 찾는 그 리스트 박스
+        target_box = soup.select_one(".schedule-this-yearlist")
+        
+        if not target_box:
+            # 혹시 클래스명이 다를 경우를 대비해 schedule-list-box 전체에서 찾기
+            list_items = soup.select(".schedule-list-box li")
+        else:
+            list_items = target_box.select("li")
             
-            # 1. 현재 줄이 '날짜'로 시작하는지 검사 (예: 02.02(월)...)
-            # 정규식: ^(시작) + 숫자2개.숫자2개 + (한글)
-            date_match = re.search(r'^(\d{2}\.\d{2}\([가-힣]\))', line)
+        print(f"🔍 발견된 일정 항목(li) 개수: {len(list_items)}개")
+
+        count = 0
+        for item in list_items:
+            # 하나의 li 안에 날짜와 제목이 다 들어있습니다.
+            # 예: <li> <strong>날짜</strong> <p>제목</p> </li>
+            
+            # 텍스트 추출 (태그 무시하고 공백으로 연결)
+            full_text = item.get_text(" ", strip=True)
+            
+            # 날짜 패턴 찾기 (숫자.숫자)
+            # 예: 02.02(월) ~ 02.27(금)
+            date_match = re.search(r'(\d{2}\.\d{2}\([가-힣]\)(?:\s*~\s*\d{2}\.\d{2}\([가-힣]\))?)', full_text)
             
             if date_match:
-                # 2. 날짜가 맞다면, 바로 '다음 줄'을 제목으로 간주하고 가져옴
-                if i + 1 < len(all_lines):
-                    next_line = all_lines[i+1].strip()
-                    
-                    # 만약 다음 줄도 날짜라면? (제목이 누락된 경우) -> 현재 줄 스킵
-                    if re.search(r'^\d{2}\.\d{2}\([가-힣]\)', next_line):
-                        i += 1
-                        continue
-                        
-                    # 여기까지 왔으면: line은 날짜, next_line은 제목!
-                    date_part = line      # 02.02(월) ~ 02.27(금)
-                    title_part = next_line # 2026학년도 1학기 복학신청
-                    
-                    try:
-                        s_date, e_date = parse_date(date_part, current_year)
-                        
-                        # 중복 방지
-                        is_duplicate = False
-                        for e in events:
-                            if e['title'] == title_part and e['start'] == s_date:
-                                is_duplicate = True
-                                break
-                        
-                        if not is_duplicate:
-                            events.append({
-                                "title": title_part,
-                                "start": s_date,
-                                "end": e_date
-                            })
-                            found_count += 1
-                            
-                    except Exception as e:
-                        print(f"파싱 에러: {e}")
+                date_part = date_match.group(1)
+                # 전체 텍스트에서 날짜 부분을 지우면 나머지가 제목!
+                title_part = full_text.replace(date_part, "").strip()
                 
-            i += 1 # 다음 줄로 이동
-            
-        print(f"✅ 최종 추출된 일정: {found_count}개")
+                if len(title_part) < 2: continue
+
+                s_date, e_date = parse_date(date_part, current_year)
+                
+                if s_date and e_date:
+                    # 중복 방지
+                    is_duplicate = False
+                    for e in events:
+                        if e['title'] == title_part and e['start'] == s_date:
+                            is_duplicate = True
+                            break
+                    
+                    if not is_duplicate:
+                        events.append({
+                            "title": title_part,
+                            "start": s_date,
+                            "end": e_date
+                        })
+                        count += 1
+                        
+        print(f"✅ 최종 추출된 일정: {count}개")
         events.sort(key=lambda x: x['start'])
         return events
 
     except Exception as e:
-        print(f"❌ 브라우저 에러: {e}")
+        print(f"❌ 오류 발생: {e}")
         return []
     finally:
         driver.quit()
