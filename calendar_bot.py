@@ -80,28 +80,28 @@ def get_calendar_with_selenium():
         current_year = now.year 
         found_count = 0
         
-        # ▼▼▼ [수정 핵심] 날짜 줄과 제목 줄을 짝지어 읽기 ▼▼▼
+        # ▼▼▼ [수정 핵심] 줄바꿈 데이터 처리 로직 ▼▼▼
         i = 0
         while i < len(all_lines):
             line = all_lines[i].strip()
             
-            # 1. 현재 줄이 '날짜'인지 검사 (예: 02.02(월) ...)
-            # 정규식: 시작부분(^)이 숫자.숫자(요일) 형태인지 확인
+            # 1. 현재 줄이 '날짜'로 시작하는지 검사 (예: 02.02(월)...)
+            # 정규식: ^(시작) + 숫자2개.숫자2개 + (한글)
             date_match = re.search(r'^(\d{2}\.\d{2}\([가-힣]\))', line)
             
             if date_match:
-                # 2. 날짜라면, 그 '다음 줄'을 제목으로 가져옴
+                # 2. 날짜가 맞다면, 바로 '다음 줄'을 제목으로 간주하고 가져옴
                 if i + 1 < len(all_lines):
                     next_line = all_lines[i+1].strip()
                     
-                    # 다음 줄이 또 다른 날짜라면? (제목이 없는 경우) -> 스킵
-                    if re.search(r'^\d{2}\.\d{2}\(', next_line):
+                    # 만약 다음 줄도 날짜라면? (제목이 누락된 경우) -> 현재 줄 스킵
+                    if re.search(r'^\d{2}\.\d{2}\([가-힣]\)', next_line):
                         i += 1
                         continue
                         
                     # 여기까지 왔으면: line은 날짜, next_line은 제목!
-                    date_part = line # 예: 02.02(월) ~ 02.27(금)
-                    title_part = next_line # 예: 2026학년도 1학기 복학신청
+                    date_part = line      # 02.02(월) ~ 02.27(금)
+                    title_part = next_line # 2026학년도 1학기 복학신청
                     
                     try:
                         s_date, e_date = parse_date(date_part, current_year)
