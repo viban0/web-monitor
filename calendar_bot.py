@@ -22,19 +22,15 @@ CHAT_ID = os.environ.get('TELEGRAM_CHAT_ID')
 
 def parse_date(date_str, current_year):
     clean_str = re.sub(r'\([가-힣]\)', '', date_str).strip()
-    
     if "~" in clean_str:
         start_str, end_str = clean_str.split("~")
     else:
         start_str = clean_str
         end_str = clean_str
-        
     start_str = start_str.strip()
     end_str = end_str.strip()
-    
     start_date = datetime.strptime(f"{current_year}.{start_str}", "%Y.%m.%d").date()
     end_date = datetime.strptime(f"{current_year}.{end_str}", "%Y.%m.%d").date()
-    
     return start_date, end_date
 
 def get_calendar_with_selenium():
@@ -42,7 +38,6 @@ def get_calendar_with_selenium():
     chrome_options.add_argument("--headless") 
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
-    # PC 화면 크기 설정 (중요)
     chrome_options.add_argument("--window-size=1920,1080")
     chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
     
@@ -53,38 +48,43 @@ def get_calendar_with_selenium():
         print(f"📡 접속 중: {TARGET_URL}")
         driver.get(TARGET_URL)
         
-        # 1. 특정 클래스 이름(schedule-this-yearlist)이 나타날 때까지 대기
+        # 1. 페이지 로딩 대기
         try:
-            print("⏳ 'schedule-this-yearlist' 박스 로딩 대기 중...")
+            print("⏳ 'schedule-this-yearlist' 박스 대기 중...")
             WebDriverWait(driver, 20).until(
                 EC.presence_of_element_located((By.CLASS_NAME, "schedule-this-yearlist"))
             )
-            print("✨ 박스 발견! 데이터가 채워지도록 3초간 대기합니다...")
+            print("✨ 박스 발견!")
         except:
-            print("⚠️ 박스 발견 실패 (시간 초과). 그래도 스크롤 후 진행합니다.")
+            print("⚠️ 박스 발견 실패 (시간 초과). 스크롤 후 진행합니다.")
 
-        # 2. [요청하신 부분] 3초 강제 대기 (데이터 렌더링 시간 확보)
-        time.sleep(3)
-
-        # 3. 혹시 모르니 스크롤 한 번 내림
+        time.sleep(5) # 넉넉하게 5초 대기
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        time.sleep(1)
+        time.sleep(2)
 
-        # 4. 소스 가져오기
+        # 2. 소스 가져오기
         html_source = driver.page_source
         soup = BeautifulSoup(html_source, 'html.parser')
         
-        # -------------------------------------------------------
-        # 여기서부터는 가장 강력한 '전체 텍스트 스캔' 방식을 사용합니다.
-        # 박스 안에 있든 밖에 있든 화면에 글자가 있으면 무조건 잡습니다.
-        # -------------------------------------------------------
-        
-        # 불필요한 태그 제거
+        # 불필요 태그 제거
         for script in soup(["script", "style"]):
             script.decompose()
 
         all_lines = soup.get_text(separator="\n", strip=True).splitlines()
         print(f"🔍 읽어온 텍스트 라인 수: {len(all_lines)}줄")
+        
+        # ▼▼▼ [디버깅 핵심] 읽은 내용을 전부 출력합니다 ▼▼▼
+        print("="*50)
+        print("📜 봇이 읽은 텍스트 내용 전체 출력 시작")
+        print("="*50)
+        for i, line in enumerate(all_lines):
+            # 내용이 너무 많으면 로그가 잘릴 수 있으므로, 공백이 아닌 줄만 출력
+            if line.strip():
+                print(f"[Line {i+1}] {line.strip()}")
+        print("="*50)
+        print("📜 출력 종료")
+        print("="*50)
+        # ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
         
         events = []
         now = datetime.now()
@@ -95,33 +95,22 @@ def get_calendar_with_selenium():
             line = line.strip()
             if not line: continue
             
-            # 날짜 패턴 (숫자.숫자) 확인
             match = re.search(r'(\d{2}\.\d{2})', line)
             if match:
-                # 요일 포함된 정확한 패턴 확인
                 date_match = re.search(r'(\d{2}\.\d{2}\([가-힣]\)(?:\s*~\s*\d{2}\.\d{2}\([가-힣]\))?)', line)
                 if date_match:
                     date_part = date_match.group(1)
                     title_part = line.replace(date_part, "").strip()
-                    
                     if len(title_part) < 2: continue
-
                     try:
                         s_date, e_date = parse_date(date_part, current_year)
-                        
-                        # 중복 방지
                         is_duplicate = False
                         for e in events:
                             if e['title'] == title_part and e['start'] == s_date:
                                 is_duplicate = True
                                 break
-                        
                         if not is_duplicate:
-                            events.append({
-                                "title": title_part,
-                                "start": s_date,
-                                "end": e_date
-                            })
+                            events.append({"title": title_part, "start": s_date, "end": e_date})
                             found_count += 1
                     except Exception:
                         continue
@@ -149,9 +138,6 @@ def send_telegram(msg):
 def run():
     kst = pytz.timezone('Asia/Seoul')
     today = datetime.now(kst).date()
-    
-    print(f"📅 기준 날짜: {today}")
-    
     events = get_calendar_with_selenium()
     
     if not events:
@@ -164,7 +150,6 @@ def run():
     for event in events:
         if event['start'] <= today <= event['end']:
             today_events.append(event['title'])
-        
         if event['start'] > today:
             d_day = (event['start'] - today).days
             if d_day <= 60:
@@ -194,7 +179,6 @@ def run():
     final_msg = "\n".join(msg_lines)
     print("메시지 미리보기:")
     print(final_msg)
-    
     send_telegram(final_msg)
 
 if __name__ == "__main__":
