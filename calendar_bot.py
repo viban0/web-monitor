@@ -20,31 +20,13 @@ TARGET_URL = "https://www.kw.ac.kr/ko/life/bachelor_calendar.jsp"
 TOKEN = os.environ.get('TELEGRAM_TOKEN')
 CHAT_ID = os.environ.get('TELEGRAM_CHAT_ID')
 
-def parse_date(date_str, current_year):
-    # 1. 괄호 및 요일 제거 (02.02(월) -> 02.02)
-    clean_str = re.sub(r'\([가-힣]\)', '', date_str).strip()
-    
-    # 2. 물결표(~), 줄표(-) 등 다양한 구분자 처리
-    if "~" in clean_str:
-        parts = clean_str.split("~")
-    elif "-" in clean_str:
-        parts = clean_str.split("-")
-    else:
-        parts = [clean_str, clean_str]
-        
-    if len(parts) >= 2:
-        start_str = parts[0].strip()
-        end_str = parts[1].strip()
-    else:
-        start_str = parts[0].strip()
-        end_str = parts[0].strip()
-    
+def parse_date_str(date_str, current_year):
+    """ '02.02(월)' 형태의 문자열을 파이썬 날짜 객체로 변환 """
+    clean_str = re.sub(r'\([가-힣]\)', '', date_str).strip() # (월) 제거
     try:
-        start_date = datetime.strptime(f"{current_year}.{start_str}", "%Y.%m.%d").date()
-        end_date = datetime.strptime(f"{current_year}.{end_str}", "%Y.%m.%d").date()
-        return start_date, end_date
+        return datetime.strptime(f"{current_year}.{clean_str}", "%Y.%m.%d").date()
     except ValueError:
-        return None, None
+        return None
 
 def get_calendar_with_selenium():
     chrome_options = Options()
@@ -61,14 +43,14 @@ def get_calendar_with_selenium():
         print(f"📡 접속 중: {TARGET_URL}")
         driver.get(TARGET_URL)
         
-        # 1. 로딩 대기 (schedule-this-yearlist 안의 li가 생길 때까지)
+        # 1. 로딩 대기
         try:
             WebDriverWait(driver, 20).until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, ".schedule-this-yearlist li"))
             )
             print("✨ 데이터 로딩 감지됨!")
         except:
-            print("⚠️ 대기 시간 초과, 스크롤 후 텍스트 스캔 시도")
+            print("⚠️ 대기 시간 초과, 스크롤 후 진행")
 
         time.sleep(3)
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
@@ -80,7 +62,7 @@ def get_calendar_with_selenium():
         for script in soup(["script", "style"]):
             script.decompose()
 
-        # 텍스트 라인 추출 (공백 제거 후 리스트화)
+        # 텍스트 라인 추출
         all_lines = [line.strip() for line in soup.get_text(separator="\n", strip=True).splitlines() if line.strip()]
         print(f"🔍 읽어온 유효 텍스트 라인 수: {len(all_lines)}줄")
         
@@ -89,60 +71,74 @@ def get_calendar_with_selenium():
         current_year = now.year 
         found_count = 0
         
-        # ▼▼▼ [최종 수정] 유연한 파싱 로직 ▼▼▼
         i = 0
         while i < len(all_lines):
             line = all_lines[i]
             
-            # 날짜 패턴 찾기 (공백 포함 허용, 줄 중간에 있어도 찾음)
-            # 예: "02.02" 또는 "02.02(월)"
-            date_match = re.search(r'(\d{2}\.\d{2})', line)
+            # ▼▼▼ [핵심 수정] 구분자(~) 무시하고 날짜 알맹이만 추출 ▼▼▼
+            # 정규식: 숫자.숫자(요일) 패턴을 모두 찾습니다.
+            dates_found = re.findall(r'\d{2}\.\d{2}\([가-힣]\)', line)
             
-            if date_match:
-                # 더 정확한 날짜 구간 패턴 확인 (요일 포함)
-                # 예: 02.02(월) ~ 02.27(금)
-                full_date_match = re.search(r'(\d{2}\.\d{2}\([가-힣]\)(?:\s*[~-]\s*\d{2}\.\d{2}\([가-힣]\))?)', line)
-                
-                if full_date_match:
-                    date_part = full_date_match.group(0) # 매칭된 날짜 문자열 전체
-                    
-                    # 1. 같은 줄에 제목이 있는지 확인
-                    # 날짜 부분을 지웠을 때 남는 글자가 있으면 그게 제목!
-                    title_part = line.replace(date_part, "").strip()
-                    
-                    # 2. 같은 줄에 제목이 없다면(너무 짧다면), 다음 줄을 제목으로 가져옴
-                    if len(title_part) < 2 and (i + 1 < len(all_lines)):
-                        next_line = all_lines[i+1]
-                        # 다음 줄이 또 날짜가 아니라면 제목으로 인정
-                        if not re.search(r'\d{2}\.\d{2}', next_line):
-                            title_part = next_line
-                            i += 1 # 다음 줄은 제목으로 썼으니 건너뜀
-                    
-                    # 제목이 여전히 없거나 날짜라면 스킵
-                    if len(title_part) < 2 or re.search(r'\d{2}\.\d{2}', title_part):
-                        i += 1
-                        continue
+            if dates_found:
+                # 1. 날짜 해석
+                if len(dates_found) == 2:
+                    # 날짜가 2개면 범위 (시작 ~ 끝)
+                    s_date = parse_date_str(dates_found[0], current_year)
+                    e_date = parse_date_str(dates_found[1], current_year)
+                elif len(dates_found) == 1:
+                    # 날짜가 1개면 하루 (시작 == 끝)
+                    s_date = parse_date_str(dates_found[0], current_year)
+                    e_date = s_date
+                else:
+                    i += 1
+                    continue
 
-                    try:
-                        s_date, e_date = parse_date(date_part, current_year)
-                        
-                        if s_date and e_date:
-                            # 중복 방지
-                            is_duplicate = False
-                            for e in events:
-                                if e['title'] == title_part and e['start'] == s_date:
-                                    is_duplicate = True
-                                    break
-                            
-                            if not is_duplicate:
-                                events.append({
-                                    "title": title_part,
-                                    "start": s_date,
-                                    "end": e_date
-                                })
-                                found_count += 1
-                    except Exception as e:
-                        print(f"파싱 에러({line}): {e}")
+                if not s_date or not e_date:
+                    i += 1
+                    continue
+                
+                # 2. 제목 찾기
+                # 해당 줄에서 날짜 텍스트를 모두 지워보고, 남는 게 제목인지 확인
+                temp_line = line
+                for d in dates_found:
+                    temp_line = temp_line.replace(d, "")
+                
+                # 특수문자(~, -)와 공백 제거
+                title_part = re.sub(r'[~\-–\s]', '', temp_line).strip()
+                
+                # 만약 남은 글자가 별로 없다면(제목이 아랫줄에 있다는 뜻), 아랫줄을 제목으로 가져옴
+                final_title = ""
+                if len(title_part) < 2:
+                    if i + 1 < len(all_lines):
+                        next_line = all_lines[i+1]
+                        # 다음 줄이 또 날짜가 아니어야 제목으로 인정
+                        if not re.search(r'\d{2}\.\d{2}', next_line):
+                            final_title = next_line.strip()
+                            i += 1 # 다음 줄 썼으니 건너뜀
+                else:
+                    # 같은 줄에 제목이 있었던 경우 (원래 줄에서 날짜만 뺀 나머지)
+                    # 여기서는 clean하게 다시 원본 line에서 날짜 부분만 replace
+                    final_title = line
+                    for d in dates_found:
+                         final_title = final_title.replace(d, "")
+                    final_title = re.sub(r'^[~\-–\s]+', '', final_title).strip() # 앞쪽 특수문자 제거
+
+                # 제목 유효성 최종 체크
+                if final_title and len(final_title) > 1:
+                    # 중복 방지
+                    is_duplicate = False
+                    for e in events:
+                        if e['title'] == final_title and e['start'] == s_date:
+                            is_duplicate = True
+                            break
+                    
+                    if not is_duplicate:
+                        events.append({
+                            "title": final_title,
+                            "start": s_date,
+                            "end": e_date
+                        })
+                        found_count += 1
             
             i += 1
             
