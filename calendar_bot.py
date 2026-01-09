@@ -21,7 +21,6 @@ TOKEN = os.environ.get('TELEGRAM_TOKEN')
 CHAT_ID = os.environ.get('TELEGRAM_CHAT_ID')
 
 def parse_date(date_str, current_year):
-    # 괄호/요일 제거
     clean_str = re.sub(r'\([가-힣]\)', '', date_str).strip()
     
     if "~" in clean_str:
@@ -43,11 +42,8 @@ def get_calendar_with_selenium():
     chrome_options.add_argument("--headless") 
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
-    
-    # ✅ [해결책 1] 화면 크기를 PC처럼 크게 설정 (반응형 웹 대응)
+    # PC 화면 크기로 위장 (중요)
     chrome_options.add_argument("--window-size=1920,1080")
-    
-    # ✅ [해결책 2] 봇이 아니라 일반 사람(User-Agent)인 척 위장
     chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
     
     print("🚀 크롬 브라우저 실행 중...")
@@ -57,30 +53,29 @@ def get_calendar_with_selenium():
         print(f"📡 접속 중: {TARGET_URL}")
         driver.get(TARGET_URL)
         
-        # ✅ [해결책 3] 데이터가 로딩될 때까지 기다리기 (최대 10초)
-        # 'schedule-this-yearlist' 클래스가 나타날 때까지 명시적으로 기다림
+        # ✅ [핵심 수정] 박스 자체가 아니라, 박스 안의 '내용물(li 태그)'이 생길 때까지 기다림
+        # 이전에는 'schedule-this-yearlist'만 기다려서 빈 박스만 보고 통과했던 것임
         try:
-            WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.CLASS_NAME, "schedule-this-yearlist"))
+            print("⏳ 데이터 로딩 대기 중 (최대 20초)...")
+            WebDriverWait(driver, 20).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, ".schedule-this-yearlist li"))
             )
-            print("✨ 연간 리스트 로딩 감지됨!")
+            print("✨ 연간 리스트 데이터(알맹이) 로딩 완료!")
         except:
-            print("⚠️ 연간 리스트 클래스를 못 찾았지만, 계속 진행합니다.")
+            print("⚠️ 데이터 로딩 시간 초과! (하지만 스크롤 후 다시 시도해봅니다)")
 
-        # ✅ [해결책 4] 화면 최하단으로 스크롤 (Lazy Loading 데이터 강제 로딩)
+        # 안전 장치: 강제 스크롤 + 3초 대기
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        time.sleep(2) # 스크롤 후 잠깐 대기
+        time.sleep(3)
 
         # 페이지 소스 가져오기
         html_source = driver.page_source
         soup = BeautifulSoup(html_source, 'html.parser')
         
-        # 텍스트 추출 및 파싱 (기존 로직 유지)
+        # 텍스트 추출
         for script in soup(["script", "style"]):
             script.decompose()
 
-        # schedule-this-yearlist 박스만 타겟팅하거나, 전체 텍스트 스캔
-        # 안전하게 전체 텍스트 스캔 사용
         all_lines = soup.get_text(separator="\n", strip=True).splitlines()
         print(f"🔍 읽어온 텍스트 라인 수: {len(all_lines)}줄")
         
@@ -93,7 +88,7 @@ def get_calendar_with_selenium():
             line = line.strip()
             if not line: continue
             
-            # 날짜 패턴 찾기 (숫자.숫자)
+            # 정규식 패턴 확인 (숫자.숫자)
             match = re.search(r'(\d{2}\.\d{2})', line)
             if match:
                 date_match = re.search(r'(\d{2}\.\d{2}\([가-힣]\)(?:\s*~\s*\d{2}\.\d{2}\([가-힣]\))?)', line)
