@@ -7,12 +7,12 @@
     <link rel="icon" href="school.png" type="image/png">
     
     <style>
-        /* 🎨 디자인 업그레이드: 폰트 & 컬러 */
+        /* 🎨 디자인: 폰트 & 컬러 */
         @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
         
         :root {
             --kw-red: #8a0025; 
-            --kw-gradient: linear-gradient(135deg, #8a0025, #c90035); /* 열정적인 그라데이션 */
+            --kw-gradient: linear-gradient(135deg, #8a0025, #c90035);
             --bg-light: #f8f9fa;
             --text-dark: #333;
         }
@@ -20,56 +20,44 @@
         body { margin: 0; font-family: 'Pretendard', sans-serif; line-height: 1.6; color: var(--text-dark); word-break: keep-all; }
         .container { max-width: 900px; margin: 0 auto; padding: 20px; }
         
-        /* 1. 헤더: 열정 넘치는 그라데이션 적용 */
+        /* 1. 헤더 */
         header { 
             background: var(--kw-gradient); 
             color: white; 
-            padding: 80px 20px; 
+            padding: 80px 20px 100px 20px;
             text-align: center; 
-            border-bottom-left-radius: 30px;
-            border-bottom-right-radius: 30px;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
             box-shadow: 0 10px 30px rgba(138, 0, 37, 0.3);
         }
         header h1 { margin: 0; font-size: 2.8rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 10px; }
         header p { font-size: 1.2rem; opacity: 0.95; font-weight: 500; }
         
-        /* 버튼 스타일: 둥글둥글하고 힙하게 */
+        /* 버튼 스타일 */
         .btn-group { margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
         .btn { 
-            display: inline-block; 
-            padding: 12px 25px; 
-            border-radius: 50px; /* 완전 둥글게 */
-            text-decoration: none; 
-            font-weight: bold; 
-            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-block; padding: 12px 28px; border-radius: 50px; 
+            text-decoration: none; font-weight: bold; transition: all 0.2s;
         }
         .btn-primary { background: white; color: var(--kw-red); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
         .btn-dark { background: rgba(0,0,0,0.3); color: white; border: 1px solid rgba(255,255,255,0.3); }
         .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
 
-        /* 2. 유용한 링크 섹션 (새로 추가됨) */
-        .link-section { text-align: center; margin-top: 40px; }
-        .link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; margin-top: 20px; }
-        .link-card { 
-            background: white; border: 2px solid #eee; border-radius: 15px; padding: 15px; 
-            text-decoration: none; color: #333; font-weight: bold; transition: 0.3s; 
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-        }
-        .link-card:hover { border-color: var(--kw-red); background: #fff5f5; transform: scale(1.05); }
-        .link-icon { font-size: 1.5rem; margin-bottom: 5px; }
-
-        /* 3. 섹션 공통 스타일 */
-        section { padding: 60px 0; }
+        /* 2. 섹션 공통 */
+        section { padding: 70px 0; }
         section h2 { text-align: center; font-size: 2rem; margin-bottom: 40px; color: var(--text-dark); }
-        .highlight { color: var(--kw-red); }
 
-        /* 로직 박스 */
+        /* 로직 박스 (전문성 강화) */
         .flow-container { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 15px; }
         .flow-box { 
-            background: white; border-radius: 20px; padding: 25px; width: 200px; text-align: center;
+            background: white; border-radius: 20px; padding: 25px; width: 220px; text-align: center;
             box-shadow: 0 10px 20px rgba(0,0,0,0.05); border: 1px solid #eee;
         }
         .flow-arrow { font-size: 1.5rem; color: #ccc; font-weight: bold; }
+        .tech-badge { 
+            font-size: 0.8rem; background: #eee; padding: 3px 8px; border-radius: 5px; 
+            color: #666; display: inline-block; margin-bottom: 5px; font-weight: bold;
+        }
 
         /* 기능 그리드 */
         .features { background-color: var(--bg-light); border-radius: 30px; margin: 40px 0; }
@@ -77,13 +65,18 @@
         .feature-item { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; }
         .feature-emoji { font-size: 3rem; margin-bottom: 15px; display: block; }
 
-        /* 4. FAQ 및 피드백 (추천 기능) */
-        .faq-box { background: white; border-radius: 15px; padding: 20px; margin-bottom: 15px; border-left: 5px solid var(--kw-red); box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .feedback-section { text-align: center; background: #333; color: white; padding: 50px 20px; border-radius: 20px; margin-bottom: 50px; }
-        .feedback-btn { background: var(--kw-red); color: white; padding: 10px 20px; border-radius: 30px; text-decoration: none; display: inline-block; margin-top: 15px; }
+        /* 3. 피드백 섹션 */
+        .feedback-section { text-align: center; margin: 60px 0; padding: 40px; background: #fff; border: 2px dashed #ddd; border-radius: 20px; }
+        .feedback-btn { background: #333; color: white; padding: 10px 25px; border-radius: 30px; text-decoration: none; display: inline-block; margin-top: 15px; transition: 0.2s;}
+        .feedback-btn:hover { background: var(--kw-red); }
 
-        /* 푸터 */
-        footer { text-align: center; padding: 30px; font-size: 0.9rem; color: #888; border-top: 1px solid #eee; }
+        /* 4. 푸터 */
+        footer { background: #222; color: #aaa; padding: 50px 20px; text-align: center; font-size: 0.9rem; }
+        .footer-links { margin-bottom: 30px; padding-bottom: 30px; border-bottom: 1px solid #444; }
+        .footer-links h4 { color: white; margin-bottom: 15px; font-size: 1rem; }
+        .footer-links a { color: #ccc; text-decoration: none; margin: 0 10px; font-weight: bold; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--kw-red); }
+        .copyright { font-size: 0.8rem; opacity: 0.6; }
     </style>
 </head>
 <body>
@@ -102,50 +95,10 @@
     </header>
 
     <div class="container">
-        <div style="text-align: center; margin-top: -40px; margin-bottom: 60px;">
-            <img src="screenshot.png" alt="실제 알림 화면" style="width: 280px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); transform: rotate(-2deg); border: 5px solid white;">
-            <p style="font-size: 0.9rem; color: #666; margin-top: 15px;">▲ 실제 제 폰에 오는 알림입니다. 깔끔하쥬? ✨</p>
+        <div style="text-align: center; margin-top: -60px; margin-bottom: 80px;">
+            <img src="screenshot.png" alt="실제 알림 화면" style="width: 280px; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); transform: rotate(-2deg); border: 6px solid white;">
+            <p style="font-size: 0.9rem; color: #666; margin-top: 20px;">▲ 실제 제 폰에 오는 알림입니다. 깔끔하쥬? ✨</p>
         </div>
-
-        <section class="link-section">
-            <h3>🔗 즐겨찾기 귀찮아서 내가 만듬</h3>
-            <div class="link-grid">
-                <a href="https://www.kw.ac.kr" target="_blank" class="link-card">
-                    <span class="link-icon">🏫</span>광운대 홈
-                </a>
-                <a href="https://www.kw.ac.kr/ko/life/notice.jsp" target="_blank" class="link-card">
-                    <span class="link-icon">📌</span>공지사항
-                </a>
-                <a href="https://everytime.kr" target="_blank" class="link-card">
-                    <span class="link-icon">🔥</span>에브리타임
-                </a>
-                <a href="https://www.instagram.com/kwangwoon_univ_official" target="_blank" class="link-card">
-                    <span class="link-icon">📸</span>공식 인스타
-                </a>
-            </div>
-        </section>
-
-        <section>
-            <h2>🧠 이거 도대체 어떻게 돌아감?</h2>
-            <p style="text-align: center; margin-bottom: 30px;">복잡한 건 딱 질색! 핵심만 요약해 드림 👇</p>
-            
-            <div class="flow-container">
-                <div class="flow-box">
-                    <h3>🕷️ 1. 잠복근무</h3>
-                    <p>파이썬 봇이 학교 홈페이지에<br>숨어있다가 <b>새 글</b>을 감지!</p>
-                </div>
-                <div class="flow-arrow">➜</div>
-                <div class="flow-box">
-                    <h3>🤖 2. 팩트체크</h3>
-                    <p>"어? 이거 새 공지네?"<br>기존 데이터랑 비교해서<br><b>중복 없이</b> 걸러냄</p>
-                </div>
-                <div class="flow-arrow">➜</div>
-                <div class="flow-box">
-                    <h3>🚀 3. 칼배송</h3>
-                    <p>텔레그램 비행기 타고<br>여러분의 폰으로<br><b>즉시 배달</b> 완료!</p>
-                </div>
-            </div>
-        </section>
 
         <section class="features">
             <div class="container" style="padding: 20px;">
@@ -171,28 +124,54 @@
         </section>
 
         <section>
-            <h2>🙋 자주 묻는 질문 (FAQ)</h2>
-            <div class="faq-box">
-                <h4 style="margin:0 0 10px 0;">Q. 이거 진짜 무료인가요?</h4>
-                <p style="margin:0; color:#555;">A. 네! 제가 졸업할 때까지(어쩌면 그 이후에도) 100% 무료로 운영됩니다. 서버비가 0원이라 저도 부담 없거든요! 😄</p>
-            </div>
-            <div class="faq-box">
-                <h4 style="margin:0 0 10px 0;">Q. 제 개인정보를 가져가나요?</h4>
-                <p style="margin:0; color:#555;">A. 절대 NO! 🙅‍♂️ 텔레그램 채널 방식이라 저는 누가 구독했는지 알 수도 없습니다. 안심하고 쓰세요.</p>
+            <h2>🛠️ 작동 원리 (Architecture)</h2>
+            <p style="text-align: center; margin-bottom: 30px; color: #555;">
+                별도의 상시 서버 없이 <b>Serverless 환경</b>에서 효율적으로 동작합니다.
+            </p>
+            
+            <div class="flow-container">
+                <div class="flow-box">
+                    <span class="tech-badge">Scheduling</span>
+                    <h3>Cron Job</h3>
+                    <p style="font-size: 0.9rem;"><b>GitHub Actions</b>가<br>지정된 주기마다 트리거되어<br>환경을 실행합니다.</p>
+                </div>
+                <div class="flow-arrow">➜</div>
+                <div class="flow-box">
+                    <span class="tech-badge">Processing</span>
+                    <h3>Scraping & Diff</h3>
+                    <p style="font-size: 0.9rem;"><b>Python</b> 스크립트가<br>새 데이터를 수집하고<br>중복을 필터링합니다.</p>
+                </div>
+                <div class="flow-arrow">➜</div>
+                <div class="flow-box">
+                    <span class="tech-badge">Delivery</span>
+                    <h3>Telegram API</h3>
+                    <p style="font-size: 0.9rem;">최종 선별된 정보를<br><b>API</b>를 통해 사용자에게<br>즉시 Push합니다.</p>
+                </div>
             </div>
         </section>
 
         <div class="feedback-section">
-            <h3>💌 개발자에게 한마디!</h3>
-            <p>써보니까 어때요? 불편한 점이나 추가하고 싶은 기능이 있다면 알려주세요!<br>칭찬해주시면 개발자가 춤을 춥니다 💃🕺</p>
-            <a href="mailto: bannanahomi@gmail.com" class="feedback-btn">이메일 보내기 📧</a>
+            <h3 style="margin:0;">💌 개발자에게 한마디!</h3>
+            <p>써보니까 어때요? 칭찬해주시면 개발자가 춤을 춥니다 💃🕺</p>
+            <a href="mailto:viban0@kw.ac.kr" class="feedback-btn">이메일 보내기 📧</a>
         </div>
 
     </div>
 
     <footer>
-        <p>Created by <b>Kim</b> (Kwangwoon Univ. Student)</p>
-        <p style="font-size: 0.8rem; opacity: 0.7;">Powered by Python & GitHub Actions</p>
+        <div class="footer-links">
+            <h4>🔗 광운대생 필수 링크</h4>
+            <br>
+            <a href="https://www.kw.ac.kr" target="_blank">🏫 학교 홈페이지</a>
+            <a href="https://www.kw.ac.kr/ko/life/notice.jsp" target="_blank">📌 공지사항</a>
+            <a href="https://everytime.kr" target="_blank">🔥 에브리타임</a>
+            <a href="https://www.instagram.com/kwangwoon_univ_official" target="_blank">📸 공식 인스타그램</a>
+        </div>
+
+        <div class="copyright">
+            <p>Created by <b>Kim</b> (Kwangwoon Univ. Student)</p>
+            <p>Powered by Python & GitHub Actions</p>
+        </div>
     </footer>
 
 </body>
