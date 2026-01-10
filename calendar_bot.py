@@ -5,17 +5,8 @@ from bs4 import BeautifulSoup
 from datetime import date, datetime, timedelta
 import re
 
-# ▼ 셀레니움 라이브러리 ▼
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-
 # ▼ 설정 ▼
-CALENDAR_URL = "https://www.kw.ac.kr/ko/life/bachelor_calendar.jsp"
+CALENDAR_URL = "https://www.kw.ac.kr/KWBoard/list5_detail.jsp"
 MENU_URL = "https://www.kw.ac.kr/ko/life/facility11.jsp"
 TOKEN = os.environ.get('TELEGRAM_TOKEN')
 CHAT_ID = os.environ.get('TELEGRAM_CHAT_ID')
@@ -98,14 +89,6 @@ def get_cafeteria_menu():
 # [기능 2] 학사일정 가져오기 (실전 모드)
 # -----------------------------------------------------------
 def get_academic_calendar():
-    chrome_options = Options()
-    chrome_options.add_argument("--headless") 
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--disable-dev-shm-usage")
-    chrome_options.add_argument("--window-size=1920,1080")
-    
-    service = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=service, options=chrome_options)
     
     events_text = []
     
@@ -114,16 +97,8 @@ def get_academic_calendar():
         today = date.today()
         print(f"📅 학사일정 접속 중... (기준일: {today})")
         
-        driver.get(CALENDAR_URL)
-        try:
-            WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.CSS_SELECTOR, ".schedule-this-yearlist li"))
-            )
-        except:
-            pass 
-
-        time.sleep(1) 
-        soup = BeautifulSoup(driver.page_source, 'html.parser')
+        page_source = requests.get(CALENDAR_URL).text
+        soup = BeautifulSoup(page_source, 'html.parser')
         all_list_items = soup.find_all("li")
         
         today_events = []
@@ -193,8 +168,6 @@ def get_academic_calendar():
     except Exception as e:
         print(f"❌ 학사일정 에러: {e}")
         events_text.append("(학사일정 로딩 실패)")
-    finally:
-        driver.quit()
         
     return "\n".join(events_text) if events_text else "• 예정된 주요 학사일정이 없습니다."
 
@@ -208,7 +181,7 @@ def run():
     
     final_msg = f"☀️ *모닝 브리핑* {today_str}\n\n" \
                 f"{calendar_msg}\n\n" \
-                f"[👉 전체 일정 보기]({CALENDAR_URL})\n" \
+                f"[👉 전체 일정 보기](https://www.kw.ac.kr/ko/life/bachelor_calendar.jsp)\n" \
                 f"────────────────\n\n" \
                 f"🥄 *오늘의 학식*\n\n" \
                 f"{menu_msg}\n\n" \
