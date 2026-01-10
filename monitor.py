@@ -33,19 +33,13 @@ def get_emoji(title):
         return "📢" 
 
 # ------------------------------------------------------
-# 2. 텔레그램 전송 함수 (구분선 포함)
+# 2. 텔레그램 전송 함수
 # ------------------------------------------------------
 def send_telegram(title, link, info):
     if TOKEN and CHAT_ID:
         try:
             icon = get_emoji(title)
             safe_title = title.replace("[", "(").replace("]", ")")
-            
-            # ▼ 메시지 포맷 ▼
-            # 💰 제목
-            # ────────────────
-            # | 작성일 2026-01-07 | 학생복지팀
-            # [👉 공지 바로가기]
             
             msg = f"{icon} *{safe_title}*\n" \
                   f"\n" \
@@ -86,6 +80,11 @@ def run():
             a_tag = item.select_one("div.board-text > a")
             info_tag = item.select_one("p.info") 
 
+            # ▼ [NEW] 교수지원팀 필터링 (우리는 학생이니까!) ▼
+            if info_tag:
+                if "교수지원팀" in info_tag.get_text():
+                    continue
+
             if a_tag:
                 # 제목 정리
                 raw_title = " ".join(a_tag.get_text().split())
@@ -95,10 +94,9 @@ def run():
                 link = a_tag.get('href')
                 full_link = f"https://www.kw.ac.kr{link}" if link else TARGET_URL
                 
-                # ▼ 정보 정리 (수정일 제거 및 포맷팅 로직) ▼
+                # 정보 정리
                 meta_info = ""
                 if info_tag:
-                    # 1. 텍스트를 파이프(|) 기준으로 쪼갭니다.
                     raw_text = info_tag.get_text("|", strip=True)
                     parts = raw_text.split("|")
                     
@@ -107,14 +105,13 @@ def run():
                     
                     for part in parts:
                         p = part.strip()
-                        if not p: continue # 빈칸 제거
+                        if not p: continue
                         
                         if "수정일" in p:
-                            skip_next = True # 수정일 나오면 다음(날짜)도 스킵 준비
+                            skip_next = True
                             continue
                         
                         if skip_next:
-                            # 수정일 뒤에 오는 날짜(숫자 포함된 문자열)를 스킵
                             if any(char.isdigit() for char in p):
                                 skip_next = False
                                 continue
@@ -125,21 +122,17 @@ def run():
                         
                         clean_parts.append(p)
                     
-                    # clean_parts -> ['작성일', '2026-01-07', '학생복지팀'] 상태
-                    
-                    # 2. '작성일'과 날짜를 한 덩어리로 합치기
                     final_parts = []
                     idx = 0
                     while idx < len(clean_parts):
                         current = clean_parts[idx]
                         if "작성일" in current and idx + 1 < len(clean_parts):
-                            final_parts.append(f"{current} {clean_parts[idx+1]}") # "작성일 2026-01-07"
+                            final_parts.append(f"{current} {clean_parts[idx+1]}")
                             idx += 2
                         else:
                             final_parts.append(current)
                             idx += 1
                     
-                    # 3. 최종 조립: "| 작성일 2026-01-07 | 학생복지팀"
                     if final_parts:
                         meta_info = "| " + " | ".join(final_parts)
 
