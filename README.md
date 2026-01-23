@@ -49,7 +49,7 @@ graph LR
 
 ---
 
-##⚠️ 주의사항 (Disclaimer)
+## ⚠️ 주의사항 (Disclaimer)
 
 이 프로젝트는 학습 및 개인적 편의를 위해 제작되었습니다.
 
@@ -57,4 +57,4 @@ graph LR
 
 과도한 요청(Request)을 보내지 않도록 설정되어 있으나, 사용 시 주의가 필요합니다.
 
-<p align="center"> Developed by <a href="https://www.google.com/search?q=https://github.com/viban0"><b>viban0</b></a> </p>
+
