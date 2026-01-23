@@ -1,4 +1,4 @@
-# 🤖 광운대 알리미 (KW Alert Bot)
+# 광운대 알리미 for telegram (KW Alert Bot)
 
 > **Serverless Telegram Bot for Kwangwoon University** > 별도의 서버 없이 GitHub Actions만으로 동작하는 광운대학교 공지 & 학식 알림 봇입니다.
 
@@ -33,28 +33,25 @@
 
 ```mermaid
 graph LR
-    A[GitHub Actions<br>(Cron Schedule)] -->|Trigger| B(Python Scripts)
-    B -->|Scrape| C{New Data?}
-    C -->|Yes| D[Telegram API Push]
-    C -->|Yes| E[Git Commit & Push<br>(Update data.txt)]
-    C -->|No| F[Exit]
+    A["GitHub Actions<br>(Cron Schedule)"] -->|Trigger| B["Python Scripts"]
+    B -->|Scrape| C{"New Data?"}
+    C -->|Yes| D["Telegram API Push"]
+    C -->|Yes| E["Git Commit & Push<br>(Update data.txt)"]
+    C -->|No| F["Exit"]
 ```
-1.Schedule: .github/workflows에 정의된 Cron 스케줄러가 워크플로우를 실행합니다.
+1. Schedule: .github/workflows에 정의된 Cron 스케줄러가 워크플로우를 실행합니다.
 
-2.Scrape & Diff: 파이썬 스크립트가 웹사이트를 크롤링하고, data.txt에 저장된 이전 ID와 비교합니다.
+2. Scrape & Diff: 파이썬 스크립트가 웹사이트를 크롤링하고, data.txt에 저장된 이전 ID와 비교합니다.
 
-3.Notification: 새로운 ID가 발견되면 텔레그램 메시지를 전송합니다.
+3. Notification: 새로운 ID가 발견되면 텔레그램 메시지를 전송합니다.
 
-4.Save State: 전송 완료된 ID를 data.txt에 덮어쓰고, git commit을 통해 저장소에 업데이트합니다.
+4. Save State: 전송 완료된 ID를 data.txt에 덮어쓰고, git commit을 통해 저장소에 업데이트합니다.
 
 ---
 
 ## ⚠️ 주의사항 (Disclaimer)
 
 이 프로젝트는 학습 및 개인적 편의를 위해 제작되었습니다.
-
 학교 홈페이지의 구조가 변경되면 크롤링이 작동하지 않을 수 있습니다.
-
-과도한 요청(Request)을 보내지 않도록 설정되어 있으나, 사용 시 주의가 필요합니다.
 
 
