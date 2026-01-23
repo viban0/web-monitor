@@ -10,7 +10,7 @@
 
 ## 📖 소개 (Introduction)
 
-이 저장소는 **[광운대 알리미 서비스](https://viban0.github.io/kwalertweb/)**의 실제 구동 코드를 담고 있습니다.  
+이 저장소는 ** [광운대 알리미 서비스](https://viban0.github.io/kwalertweb/) **의 실제 구동 코드를 담고 있습니다.  
 24시간 돌아가는 서버 비용을 절약하기 위해 **Git Scraping** 방식을 사용하여, **GitHub Actions**가 주기적으로 학교 홈페이지를 크롤링하고 텔레그램으로 알림을 전송합니다.
 
 ### 🎯 핵심 기능
