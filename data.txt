@@ -1,4 +1,5 @@
 [학사] 2026학년도 1학기 수강신청 공고|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51637&tpage=1&searchKey=1&searchVal=&srCategoryId=
+[일반] [채용공고][서울청년센터 강북] 직원(도전지원팀장) 채용 공고|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51661&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [국제학생] 2026학년도 1학기 학부 외국인 학생 복학신청(2차) 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51660&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [학사] 2026학년도 1학기 재입학 합격자 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51659&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [국제교류] 2026년도 ASEM DUO 벨기에/왈로니아-브뤼쉘 장학사업 지원 요강 안내(교원 대상)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51657&tpage=1&searchKey=1&searchVal=&srCategoryId=
@@ -7,9 +8,5 @@
 [국제학생] 2026학년도 1학기 수강신청 공고|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51644&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] [KW-VIP교과목] 2026학년도 1학기 KW-VIP(다학년 다학기 프로젝트) 교과목 모집(수강신청 안내)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51585&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] 기간제 계약직원 채용(대외국제처 국제교류팀)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51654&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[외부] 2026년 제7기 동행멘토단 모집 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51653&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[외부] [시립마포청소년센터] 2026년 청소년 참여활동단 모집 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51651&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[일반] [강북창업지원센터] 2026년 강북창업지원센터 상반기 입주기업 모집|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51649&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[일반] 기간제 계약직원 채용 공고(교육대학원 광운대심리건강증진센터 운영팀)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51645&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] [광운대 캠퍼스타운]2026 광운 Startup SEED Challenge 입주기업모집(~2/4)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51634&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [외부] 2026년도 1388청소년지원단 별하단 서포터즈 2기 추가 모집 안내(연장)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51587&tpage=1&searchKey=1&searchVal=&srCategoryId=
