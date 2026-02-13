@@ -25,3 +25,4 @@
 [일반] [교수학습센터] 2026학년도 1학기 또래코치 모집(선착순 20명)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51791&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [등록/장학] 2026-1학기 재학생 등록금 납부 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51782&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] [공학] 2026학년도 1학기 공학계열 재학생 수강상담 안내(수학계획서 작성 필수)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51768&tpage=1&searchKey=1&searchVal=&srCategoryId=
+[일반] [공학] 2026학년도 1학기 선,후수 교과목 이수체계 준수제도 및 선수과목 미이수자 상담 시행 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51767&tpage=1&searchKey=1&searchVal=&srCategoryId=
