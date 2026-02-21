@@ -87,7 +87,8 @@ def run():
             if info_tag and "교수지원팀" in info_tag.get_text():
                 continue
 
-           if info_tag and "국제학생" in info_tag.get_text():
+           
+            if info_tag and "국제학생" in info_tag.get_text():
                 continue 
 
             if a_tag:
