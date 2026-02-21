@@ -87,6 +87,9 @@ def run():
             if info_tag and "교수지원팀" in info_tag.get_text():
                 continue
 
+           if info_tag and "국제학생" in info_tag.get_text():
+                continue 
+
             if a_tag:
                 raw_title = " ".join(a_tag.get_text().split())
                 clean_title = raw_title.replace("신규게시글", "").replace("Attachment", "").strip()
