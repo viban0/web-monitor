@@ -1,5 +1,6 @@
 [국제학생] 제7회 ISF 외국인유학생 취업, 창업, 진학 페어 및 스타트업 포럼 참가 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51930&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [국제학생] 외국인 유학생 건강보험 제도 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51928&tpage=1&searchKey=1&searchVal=&srCategoryId=
+[등록/장학] 2026-1학기 재학생 등록금 2차 납부 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51925&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] 기간제 계약직원 채용 공고(총무처 재무팀)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51728&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] [교수학습센터] 2026-1학기 1:1 학습코칭 다회기 참여학생 모집(선착순 20명)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51922&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [국제학생] 2026학년도 1학기 광운앤아이(KW&I) 튜터링 프로그램 안내 및 튜티 신청|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51921&tpage=1&searchKey=1&searchVal=&srCategoryId=
@@ -15,15 +16,4 @@
 [국제학생] 2026 K 컬쳐 프로그램 안내 (외국인 유학생 대상)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51908&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [학사] 2025학년도 후기(2026년 8월) 졸업연기 및 조기졸업 신청 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51907&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] [채용공고]플라즈마바이오과학연구소 연구원 및 연구교수 채용|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51905&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[학사] 2026학년도 1학기 조기취업자에 관한 사항 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51903&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[일반] 기간제 계약직원 채용 공고(학생처 경력개발팀 취업컨설턴트)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51902&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[일반] 기간제 계약직원 채용(교육혁신원 원격교육지원센터)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51901&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[학사] 2026학년도 1학기 유고결석 및 공결에 관한 사항 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51899&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[학사] 2026학년도 1학기 학생증 발급 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51861&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[학사] 2026학년도 신입생 학사 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51851&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[학사] 2026학년도 1학기 서울권역e-러닝 학사일정 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51811&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[학사] 2026학년도 편입생 학사 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51869&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[일반] [학생상담실] 스트레스지수 측정-유비오맥파로 손쉽게 (~2.27일까지 매일 실시)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51893&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[등록/장학] 2026학년도 삼송장학회 장학생(전기, 전자, 기계 등 공학계열) 선발 안내_교내접수|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51891&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[국제학생] 2026학년도 1학기 어울림:멘토링 프로그램 참여자 신청 안내(Korean student)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51888&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [국제교류] 2026학년도 미국, 유럽, 중국 및 아시아권 대학 파견 교환학생 선발 계획|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51808&tpage=1&searchKey=1&searchVal=&srCategoryId=
