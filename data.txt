@@ -10,3 +10,4 @@
 [일반] [채용공고] 광운대학교 산학협력단 직원 채용 공고|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52094&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] 기간제 계약직원 채용 공고(교육혁신원 원격교육지원센터)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52092&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] [산학협력단] 구리시 청년 성장 프로젝트 매니저 채용 공고|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52086&tpage=1&searchKey=1&searchVal=&srCategoryId=
+[일반] [교수학습센터] 2026-1 학습공동체 kw전공튜터링 '튜티' 모집|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52054&tpage=1&searchKey=1&searchVal=&srCategoryId=
