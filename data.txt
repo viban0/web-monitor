@@ -1,3 +1,4 @@
+[일반] [채용공고] 광운대학교 산학협력단 직원 채용 공고|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52168&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [학생] 장소사용 신청 안내(2026년 4월)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52164&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] [체육지원팀] 2026 아이스하키 제4회 일본 아비라컵 대회출전 경기일정 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52163&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [외부] 2026년 RISS 서포터즈 「PLAY RISS 8기」 모집 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52162&tpage=1&searchKey=1&searchVal=&srCategoryId=
@@ -13,4 +14,3 @@
 [일반] 2026 광운대학교 신입생 환영음악회|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52147&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [등록/장학] [교외장학_교내모집] 2026년도 형남진장학재단 장학생 선발 안내_생활비성|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52146&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [봉사] 2026년 『KT 랜선야학』 서울지역 대학생 멘토 선발 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52145&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[등록/장학] 2026년 한국장학재단(인문100년, 예술체육비전) 학생 사전 신청 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51986&tpage=1&searchKey=1&searchVal=&srCategoryId=
