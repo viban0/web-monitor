@@ -9,6 +9,7 @@
 [일반] [채용공고]광운대학교 산학협력단 「로봇특성화대학사업단」 직원 채용 공고|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52295&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] [정보통신처]불법 소프트웨어, 이미지, 폰트 사용 및 배포 방지를 위한 협조 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52293&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] [정보통신처]내PC지키미를 이용한 PC보안 및 알약 점검 협조 요청|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52292&tpage=1&searchKey=1&searchVal=&srCategoryId=
+[일반] 2026-1 참빛핵심역량 비교과인증제 안내(비교과프로그램 참여하고 총장직인 인증서 받고 졸업하자!)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51953&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [국제학생] 2026 학생 창업유망팀 300+ 외국인 유학생 우선 선발 제도 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52317&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] [교수학습센터]2026학년도 1학기 기초학력증진 프로그램 수강안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52113&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] [교수학습센터] 2026학년도 1학기 기초학력증진프로그램(수학/물리/화학/영어/한국어) 신청 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51941&tpage=1&searchKey=1&searchVal=&srCategoryId=
@@ -16,4 +17,3 @@
 [일반] [도봉구청년창업센터] 제3차 스케일업아카데미 : AI시대, 내 아이디어가 사업이 되는 노하우! (4.29)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52254&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [국제학생] 외국인 유학생이 꼭 알아야 할 주요위반 출입국관리법 5가지|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52304&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [외부] 제2회 전국대학생양자컨퍼런스 참가자 모집|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52303&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[외부] [대통령기록관] 2026년 대통령기록물 활용 우수논문 공모 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52302&tpage=1&searchKey=1&searchVal=&srCategoryId=
