@@ -4,13 +4,11 @@
 [일반] [채용공고] 반도체특성화대학사업단 직원 채용 공고|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52431&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] [공학교육혁신센터] 2026 MY(Multi-Y)캡스톤디자인 프로그램 참가자 모집 안내(~5월 22일까지)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52294&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] [HUSS-글로벌공생] 2026 글로벌 역량 강화를 위한 일본(오키나와) 기업 탐방 프로그램 참여자 모집|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52430&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[일반] [학생상담실] ALL CARE WEEK 맥파를 이용한 스트레스 검사 및 해석상담 운영 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52386&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] 웹메일 계정 정리 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52425&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [국제교류] 2027-28 풀브라이트 한국어 보조강사(FLTA) 프로그램 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52424&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] [NCI창업패키지사업단] 2026년 「모두의 창업 프로젝트」 설명회 및 신청서 작성 특강 안내(5.6(수)) - 2차 개최|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52423&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] [지능형로봇혁신융합대학사업단]2026여름계절학기 학점교류 및 CO-WEEK 아카데미 신청자 모집|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52422&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] [대학혁신지원사업]2026 KW혁신 서포터즈 모집 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52419&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[일반] [대학혁신지원사업] 2026학년도 대학생 핵심역량진단(K-CESA) 참여자 선착순 모집|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52280&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [국제교류] 2026 서울 인재 해외 교환학생 장학생 선발|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52417&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] [교수학습센터]2026-1 기초학력 클리닉 튜티 모집|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52415&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] 「2026 하나 소셜벤처 유니버시티 5기」 창업 교육 참가자 모집|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52414&tpage=1&searchKey=1&searchVal=&srCategoryId=
@@ -19,9 +17,4 @@
 [병무] 2026년 육군 학사장교 모집 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51969&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [학사] 2026학년도 하계계절학기 타대학 학점교류 안내 (본교→타교)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52402&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] [로봇특성화대학사업단] 2026 로봇특성화대학사업 전공설명회 개최 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52400&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[국제학생] 2026 Global Talent Fair 채용박람회 구직자 모집|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52346&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[일반] [교수학습센터]2026-1 기초학력 튜터링 튜터 선발결과 공지|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52390&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[국제학생] LG이노텍 글로벌인턴십 외국인 유학생 모집 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52389&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[국제학생] [서울글로벌센터] 외국인 유학생 구석구석 서울 탐방 안내 (강남편)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52388&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] [체육지원팀] 축구부 2026 대학축구 U리그 경기 일정 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52368&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[학생] 【반도체특성화대학사업단】 반도체특성화대학사업단 양성 학생 2기 합격자 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52383&tpage=1&searchKey=1&searchVal=&srCategoryId=
