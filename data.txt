@@ -1,3 +1,6 @@
+[일반] 기간제 계약직원 채용 공고(정보과학교육원 교학팀/홍보전담)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52438&tpage=1&searchKey=1&searchVal=&srCategoryId=
+[일반] 기간제 계약직원 채용 공고(국제처 한국어교육센터)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52437&tpage=1&searchKey=1&searchVal=&srCategoryId=
+[일반] 기간제 계약직원 채용 공고(학생처 경력개발팀 취업컨설턴트)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52436&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] [구리시 청년성장프로젝트] 5월 청년역량강화 및 일상생활지원 프로그램 참가자 모집|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52434&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [학사] [HUSS-글로벌공생] 2026 HUSS 융합캠프 아카데미 참여 학생 모집(여름 계절학기 1학점 부여)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52433&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] 2026년 『해외 일경험 지원사업』 (호주) 참여자 모집 안내(추가 연장)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52432&tpage=1&searchKey=1&searchVal=&srCategoryId=
@@ -15,4 +18,3 @@
 [등록/장학] 2026학년도 1학기 국가장학금 지급 (예정)안내(2차)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52412&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [국제학생] 유학생 멘토단 KIF·정책법학대학 야구 직관 행사 참가자 모집 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52407&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] [로봇특성화대학사업단] 2026 로봇특성화대학사업 전공설명회 개최 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52400&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[국제학생] 2026 외국인 한국어 말하기 대회 참가자 모집_ 문화체육관광부 장관상 수여|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52114&tpage=1&searchKey=1&searchVal=&srCategoryId=
