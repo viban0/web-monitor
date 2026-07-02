@@ -1,3 +1,6 @@
+[일반] [공학교육혁신센터] 제2회 파이썬 SW 활용 경진대회 참여팀 모집|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52799&tpage=1&searchKey=1&searchVal=&srCategoryId=
+[일반] [공학교육혁신센터] 인공지능 미래인재 양성교육 참가자 모집|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52729&tpage=1&searchKey=1&searchVal=&srCategoryId=
+[일반] [공학교육혁신센터] 프로그래밍 코딩 기초 교육 참가자 모집|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52724&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] [공학교육혁신센터] 2026학년도 로봇영상처리를 위한 AI 모델 기초 실습 참가자 모집(8.10~8.12)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52823&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] [현장실습] 2026년 하반기 한미 대학생 연수(WEST) 참가자 모집|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52821&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [학사] 2026학년도 하계방학 기간 중 행정부서 업무시간 변경 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52678&tpage=1&searchKey=1&searchVal=&srCategoryId=
@@ -15,9 +18,6 @@
 [등록/장학] 2026학년도 2학기 보훈장학금 신청 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52807&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [등록/장학] 2026학년도 2학기 화도 및 동해장학금 1차 신청 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52803&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [학사] 2026학년도 2학기 재입학 전형 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52788&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[일반] [공학교육혁신센터] 제2회 파이썬 SW 활용 경진대회 참여팀 모집|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52799&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[일반] [공학교육혁신센터] 인공지능 미래인재 양성교육 참가자 모집|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52729&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[일반] [공학교육혁신센터] 프로그래밍 코딩 기초 교육 참가자 모집|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52724&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [국제학생] 2026 Youth Camp for ASEAN & Friends' Engagement (YCAFE)참가 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52797&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] [광운창업지원센터] 광운창업지원센터 신규 입주기업 모집(~07.04, 모집연장)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52714&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [국제학생] 2026학년도 1학기 정기 TOPIK II 응시료 환급 안내(외국인 유학생 대상)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52696&tpage=1&searchKey=1&searchVal=&srCategoryId=
