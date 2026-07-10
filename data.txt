@@ -1,3 +1,7 @@
+[일반] [공학교육혁신센터] ★ 제2회 파이썬 SW 활용 경진대회 참여팀 모집|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52799&tpage=1&searchKey=1&searchVal=&srCategoryId=
+[일반] [공학교육혁신센터] 2026학년도 로봇영상처리를 위한 AI 모델 기초 실습 참가자 모집(8.10~8.12)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52823&tpage=1&searchKey=1&searchVal=&srCategoryId=
+[일반] [공학교육혁신센터] 인공지능 미래인재 양성교육 참가자 모집|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52729&tpage=1&searchKey=1&searchVal=&srCategoryId=
+[국제학생] 2026학년도 2학기 학부 외국인 신·편입생 2차 모집 합격자 발표|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52864&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [등록/장학] 2026년도 정읍시민장학재단 우수인재 장학금 장학생 선발 공고|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52863&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [국제교류] 2027-2028 독일정부초청장학생(DAAD 장학생) 선발 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52862&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [국제학생] 2026학년도 1학기 외국인 유학생 성적 장학금 제도 시행에 따른 TOPIK 성적표 제출 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52861&tpage=1&searchKey=1&searchVal=&srCategoryId=
@@ -8,9 +12,6 @@
 [일반] 교내 전화 서비스 복구 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52852&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] [채용공고]산학협력단 『강북청년창업마루』직원 채용 공고|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52851&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [학사] 2026학년도 1학기 성적 확인 및 성적증명서 발급 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52850&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[일반] [공학교육혁신센터] 인공지능 미래인재 양성교육 참가자 모집|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52729&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[일반] [공학교육혁신센터] ★ 제2회 파이썬 SW 활용 경진대회 참여팀 모집|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52799&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[일반] [공학교육혁신센터] 2026학년도 로봇영상처리를 위한 AI 모델 기초 실습 참가자 모집(8.10~8.12)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52823&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] 교내 네트워크 서비스 복구 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52847&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] [체육지원팀] 2026 축구부 제62회 추계대학축구연맹전 경기 일정 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52814&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] [교수학습센터]2026학년도 여름방학 기초학력 증진 프로그램 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52846&tpage=1&searchKey=1&searchVal=&srCategoryId=
