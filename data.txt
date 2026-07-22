@@ -1,3 +1,6 @@
+[일반] [KW-VIP교과목] 2026학년도 2학기 KW-VIP(다학년 다학기 프로젝트) 교과목 모집(수강신청 안내)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52915&tpage=1&searchKey=1&searchVal=&srCategoryId=
+[병무] 2026년 8월 각 군 현역병 모집 계획 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52914&tpage=1&searchKey=1&searchVal=&srCategoryId=
+[일반] (보훈특별채용) 기간제 계약직원 채용 공고(전자정보공과대학 전자공학과)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52913&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [국제교류] [SAF Korea] 2027년 봄학기 디자인/미디어/아트/필름/사진/건축 전공생들을 위한 특별 온라인 설명회|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52912&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] [로봇특성화대학사업단] 2026 첨단산업 로봇 특성화대학사업 양성과정 지원 안내(3차 모집)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52882&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [국제학생] [글로벌전략팀] 2026학년도 2학기 외국인 유학생 교과목 이수 체계도 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52903&tpage=1&searchKey=1&searchVal=&srCategoryId=
@@ -9,4 +12,3 @@
 [일반] 단체교섭 요구 사실 및 교섭참여 공고|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52908&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] [공학교육혁신센터] 제2회 파이썬 SW 활용 경진대회 '심화활용' 참여팀 추가모집|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52906&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [학사] 2026학년도 3차 다전공(복수/부/심화/연계/마이크로/학생설계융합전공) 신청 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52905&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[일반] [모집마감] [HUSS-글로벌공생] 2026 글로벌 공생 HUSS AI 기반 데이터 분석 학습공동체 참가자 모집|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52891&tpage=1&searchKey=1&searchVal=&srCategoryId=
