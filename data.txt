@@ -1,3 +1,6 @@
+[일반] [KW-VIP교과목] 2026학년도 2학기 KW-VIP(다학년 다학기 프로젝트) 교과목 모집(수강신청 안내)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52915&tpage=1&searchKey=1&searchVal=&srCategoryId=
+[일반] 기간제 계약직원 채용 공고(공과대학 화학공학과)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52930&tpage=1&searchKey=1&searchVal=&srCategoryId=
+[일반] 기간제 계약직원 채용 공고(공과대학 교학팀)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52929&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [국제학생] [외국인 유학생] 2026학년도 2학기 수강신청 공고|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52927&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] [대학혁신사업] 2026-1 학사경고여도 괜찮아 - 학사경고자 상담 안내 -|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52924&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] [구리시 청년성장프로젝트] 8월 청년역량강화 및 일상생활지원 프로그램 참가자 모집|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52923&tpage=1&searchKey=1&searchVal=&srCategoryId=
@@ -6,7 +9,6 @@
 [학사] 2026학년도 2학기 수강신청 공고|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52920&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [학생] [재학생 법정의무교육] 2026 폭력예방교육 수강 안내 (모든 재학생 필수 이수 항목)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52442&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [학사] 2026학년도 후기 대학원 학석사연계과정 지원 학생 모집(7.13~7.27)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52684&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[일반] [KW-VIP교과목] 2026학년도 2학기 KW-VIP(다학년 다학기 프로젝트) 교과목 모집(수강신청 안내)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52915&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [병무] 2026년 8월 각 군 현역병 모집 계획 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52914&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] (보훈특별채용) 기간제 계약직원 채용 공고(전자정보공과대학 전자공학과)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52913&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [국제교류] [SAF Korea] 2027년 봄학기 디자인/미디어/아트/필름/사진/건축 전공생들을 위한 특별 온라인 설명회|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52912&tpage=1&searchKey=1&searchVal=&srCategoryId=
@@ -14,5 +16,3 @@
 [일반] [육군사관학교, 광운대학교 공동주최] 제25회 대학생 안보토론대회 참가자 모집 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52868&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] 2026 BTS(Blueprint To Success)_마인드 마이너 송길영 작가|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52926&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [외부] [한국사학진흥재단] 2026학년도 2학기 행복기숙사(연합) 입주생 정기모집 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52925&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[외부] [교육부] 2026년 지방교육재정 데이터 분석, 활용 논문 대회 참여 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52919&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[외부] [남양주시도시공사] 남양주시 청소년 e스포츠 페스티벌 참가 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52918&tpage=1&searchKey=1&searchVal=&srCategoryId=
