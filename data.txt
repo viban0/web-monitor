@@ -8,6 +8,8 @@
 [일반] 배경훈 부총리 초청 특별강연 [AI시대, 청년과의 대화] AI가 두려운 청년들에게|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53319&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [등록/장학] 2026학년도 2학기 가족장학금 신청 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53316&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] [교수학습센터] 2026-2학기 기초학력 클리닉 튜터링 '튜터'모집(정원 20명)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53315&tpage=1&searchKey=1&searchVal=&srCategoryId=
+[일반] [정보통신처]불법 소프트웨어, 이미지, 폰트 사용 및 배포 방지를 위한 협조 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53314&tpage=1&searchKey=1&searchVal=&srCategoryId=
+[일반] [정보통신처]내PC지키미를 이용한 PC보안 및 알약 점검 협조 요청|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53313&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [학사] 2026학년도 2학기 폐강 교과목 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53312&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [국제학생] 제8회 ISF 외국인 유학생 커리어페어(취업·창업·대학진학)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53311&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [국제학생] 2026 경주 APEC 메모리얼 페스타 재안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53309&tpage=1&searchKey=1&searchVal=&srCategoryId=
@@ -15,11 +17,3 @@
 [일반] [교수학습센터] 2026-2학기 1:1 학습코칭 다회기 참여학생 추가 모집(10명)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53306&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] [산학협력단] 2026학년도 광운대학교 하반기 창업동아리 모집(~09.25)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53242&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [학생] [재학생 법정의무교육] 2026 온라인 장애인식개선교육 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53304&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[일반] [교수학습센터]2026-2 학습공동체 KW전공튜터링 '튜티' 모집(~9/21)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53301&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[등록/장학] [대전광역시] 2026년 하반기 인재육성(성취) 장학생 선발 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53299&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[학생] [재학생 법정의무교육] 2026 폭력예방교육 수강 안내 (모든 재학생 필수 이수 항목)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52442&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[일반] 제2회 ZYXCAD AX 경진대회 - Design Your Dreams with ZYX 참가 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53293&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[국제학생] 30일간의 서울일주 5기 모집(9.8~9.21)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53291&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[국제학생] 외국인주민 서울생활 종합정보 플랫폼 「MY SEOUL+」 오픈 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53290&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[국제학생] [외국인유학생] 서울글로벌센터 비즈니스 한국어 3기 모집 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53289&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[국제학생] [외국인유학생] 서울글로벌센터 토픽 대비반 3기 모집 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53288&tpage=1&searchKey=1&searchVal=&srCategoryId=
