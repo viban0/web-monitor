@@ -4,3 +4,5 @@
 [학생] [재학생 법정의무교육] 2026 폭력예방교육 수강 안내 (모든 재학생 필수 이수 항목)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=52442&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [학사] 2026학년도 2학기 CDP특강 안내 (강연일자 변경 추가 9.28.)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53171&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [외부] 하나 나라사랑카드 발급 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=51568&tpage=1&searchKey=1&searchVal=&srCategoryId=
+[외부] [서울특별시] 제12회 서울 29초 영화제|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53430&tpage=1&searchKey=1&searchVal=&srCategoryId=
+[외부] [한국산업기술진흥원] 5극 3특 성장엔진 미래지도 AI 영상 공모전|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53429&tpage=1&searchKey=1&searchVal=&srCategoryId=
