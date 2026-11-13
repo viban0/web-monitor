@@ -4,7 +4,6 @@
 [일반] [학생상담실] "다시 시작하고 싶은데, 어디서부터 해야 할지 모르겠다면" =>"다시 나의 페이스로" 대학생활 적응 집단상담 RE:BALANCE|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53632&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [학사] 2026학년도 학부제 입학생 세부전공 1차 선택 결과 공고|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53680&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] (사)한국건설교통신기술협회 미래 건설교통신기술인 장학사업 신청 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53679&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[일반] [체육지원팀] 광운대학교 아이스하키부 「2026 KUSF 대학 U-리그」 경기 결과 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53342&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] 제14회 창업보육투자유치경연회 참가팀 모집(~11/16)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53498&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [학사] [대학혁신지원사업] 2026학년도 2학기 글쓰기 대회 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53676&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [일반] [2026 실험실 특화형 창업선도대학] 「Lab-Startup 밋업(4차)」 참가자 모집 (11.18.(수) 10:30~13:00)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53674&tpage=1&searchKey=1&searchVal=&srCategoryId=
@@ -12,13 +11,5 @@
 [국제학생] 「글로벌 독도 서포터즈 활성화 세미나」 외국인 유학생 참가 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53673&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [국제학생] 2026학년도 2학기 외국인 유학생 한국어능력 향상 장려금 지원 안내(1차)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53672&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [등록/장학] 2026년 대학생 봉사자 연계 아동돌봄 지원사업(겨울방학) 참여대학 생 모집 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53668&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[일반] [앵커사업] 2026년도 동계 계절수업 Python 교과목 신청 안내 (장학금 지급/전공학점 인정)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53666&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[일반] [지능형로봇혁신융합대학사업단]2026학년도 동계 계절학기 학점교류 안내(본교→국민대학교)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53665&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[일반] [교수학습센터]2026-2 기초학력증진프로그램 참여자 모집(학기 상시)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53254&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[일반] [앵커사업] 2026 AI 티키타카 프로젝트 전시회 개최! (프로젝트 관람하고 커피쿠폰 1만원 받아가세요!)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53662&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[일반] [교육혁신원] 2026학년도 2학기 다전공 수요조사 참여 안내 (참여시, 생성형 AI 크레딧 제공 | ~11/29(일))|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53648&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[일반] 2026-2 참빛핵심역량 비교과인증제 안내(참빛포인트 받고 총장직인 인증서 받아서 졸업하자!)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53201&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[학생] 광운대학교 2026학년도 참빛핵심역량 진단 참여 안내(2학년/3학년/4학년 대상)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53378&tpage=1&searchKey=1&searchVal=&srCategoryId=
-[일반] 2027년 KUSF 대학스포츠 슬로건 공모전 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53641&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [학사] 2026학년도 동계 계절수업(브릿지학기제) 수강신청 안내|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53634&tpage=1&searchKey=1&searchVal=&srCategoryId=
 [학사] 2026학년도 동계계절수업 타대학 학점교류 안내 (본교→타교)|https://www.kw.ac.kr/ko/life/notice.jsp?BoardMode=view&DUID=53557&tpage=1&searchKey=1&searchVal=&srCategoryId=
